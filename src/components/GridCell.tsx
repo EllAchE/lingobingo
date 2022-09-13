@@ -1,0 +1,20 @@
+import React from 'react';
+import Grid from '@mui/material/Grid';
+
+export function GridCell(props: any) {
+  return (
+    <Grid
+      container
+      justifyContent={'space-around'}
+      justifyItems={'center'}
+      alignItems={'center'}
+      xs={2}
+      borderColor={'white'}
+      border={1}
+      height={'120px'}
+      textAlign={'center'}
+    >
+      {props.children}
+    </Grid>
+  );
+}
