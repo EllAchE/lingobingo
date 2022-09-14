@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 
 export default function GridCell(props: any) {
+  // console.log('cell');
+  // console.log(props);
+  const [isClicked, setIsClicked] = useState(false);
   return (
     <Grid
       container
@@ -10,10 +13,13 @@ export default function GridCell(props: any) {
       justifyItems={'center'}
       alignItems={'center'}
       xs={2}
-      borderColor={'white'}
       border={1}
       height={'120px'}
       textAlign={'center'}
+      sx={{ backgroundColor: isClicked ? 'red' : 'white' }}
+      onClick={() => {
+        setIsClicked(!isClicked);
+      }}
     >
       <Typography sx={{ paddingX: 1 }} variant={'body1'}>
         {props.children}

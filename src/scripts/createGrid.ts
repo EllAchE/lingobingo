@@ -5,16 +5,16 @@ export function createGrid(words: string[]) {
 
   let wordsCopy = [...words];
 
-  while (wordsCopy.length > 0 && (!wordGrid[-1] || wordGrid[-1].length < 5)) {
+  while (row < 5) {
     let word: string[] = wordsCopy.splice(
       Math.floor(Math.random() * wordsCopy.length),
       1
     );
+    wordGrid[row].push(word[0]);
+    filename += word[0];
     if (wordGrid[row].length >= 5) {
       row += 1;
     }
-    wordGrid[row].push(word[0]);
-    filename += word[0];
   }
 
   wordGrid[2][2] = 'FREE TESLA PARKING';

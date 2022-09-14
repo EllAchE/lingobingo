@@ -3,8 +3,10 @@ import Grid from '@mui/material/Grid';
 import GridRow from './GridRow';
 
 export function BingoCard({ wordGrid }: { wordGrid: string[] }) {
+  // console.log('card');
+  // console.log(wordGrid);
   return (
-    <Grid container maxWidth={'900px'} minWidth={'600px'}>
+    <Grid container maxWidth={'900px'} minWidth={'600px'} margin="auto">
       <GridRow row={wordGrid[0]}></GridRow>
       <GridRow row={wordGrid[1]}></GridRow>
       <GridRow row={wordGrid[2]}></GridRow>
