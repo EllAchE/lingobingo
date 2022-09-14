@@ -3,8 +3,6 @@ import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 
 export default function GridCell(props: any) {
-  // console.log('cell');
-  // console.log(props);
   const [isClicked, setIsClicked] = useState(false);
   return (
     <Grid

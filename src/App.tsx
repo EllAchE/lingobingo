@@ -19,13 +19,6 @@ function App() {
     setWordGrid(createGrid(presetCategories[newCategory]).wordGrid);
   };
 
-  // console.log('bbb');
-  // useEffect(() => {
-  //   console.log('aaa');
-  //   //@ts-ignore
-  //   setWordGrid(createGrid(presetCategories[category]).wordGrid);
-  // }, [category]);
-
   return (
     <Box>
       <Typography
