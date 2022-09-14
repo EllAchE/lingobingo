@@ -1,7 +1,7 @@
 // TODO: this should allow gen of new random item
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { GridCell } from './GridCell';
+import GridCell from './GridCell';
 
 export function GridRow(props: any) {
   return (

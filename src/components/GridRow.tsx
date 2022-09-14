@@ -1,8 +1,8 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { GridCell } from './GridCell';
+import GridCell from './GridCell';
 
-export function GridRow(props: any) {
+export default function GridRow(props: any) {
   return (
     <Grid container justifyContent={'center'}>
       {props.row.map((cellText: string) => {

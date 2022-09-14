@@ -3,17 +3,13 @@ export function createGrid(words: string[]) {
   let row: number = 0;
   let wordGrid: any = [[], [], [], [], []];
 
-  console.log(words);
-  console.log(wordGrid);
-  console.log(wordGrid[-1]);
+  let wordsCopy = [...words];
 
-  while (words.length > 0 && (!wordGrid[-1] || wordGrid[-1].length < 5)) {
-    let word: string[] = words.splice(
-      Math.floor(Math.random() * words.length),
+  while (wordsCopy.length > 0 && (!wordGrid[-1] || wordGrid[-1].length < 5)) {
+    let word: string[] = wordsCopy.splice(
+      Math.floor(Math.random() * wordsCopy.length),
       1
     );
-    console.log('word');
-    console.log(word);
     if (wordGrid[row].length >= 5) {
       row += 1;
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 
-export function GridCell(props: any) {
+export default function GridCell(props: any) {
   return (
     <Grid
       container

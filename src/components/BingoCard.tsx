@@ -1,37 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
-import { GridRow } from './GridRow';
+import GridRow from './GridRow';
 import { createGrid } from '../scripts/createWords';
+import { presetCategories } from './presetCategories';
 
-export function BingoCard() {
-  const testWords = [
-    'Someone wearing patagonia',
-    'Someone wearing allbirds',
-    'Airpods or case visible',
-    'RSUs mentioned',
-    'Earnings report',
-    'Vest and rest',
-    '1 billion in the bank',
-    'Swimply',
-    'Circle back',
-    'Presentation of more than 40 slides',
-    'Catered Food',
-    'CEO high fives someone',
-    'Apple watch',
-    'Mandarin spoken',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Any or Q1, Q2, Q3,Q4',
-    'Acronym with more than 4 lettersa',
-    'Acronym with more than 4 lettersa',
-    'More than 3 acronyms in one sentence',
-  ];
-  const { wordGrid } = createGrid(testWords);
+export function BingoCard({
+  category,
+  setCategory,
+}: {
+  category: string;
+  setCategory: any;
+}) {
+  console.log('init ren');
+
+  //@ts-ignore
+  let { wordGrid } = createGrid(presetCategories[category]);
+
   return (
     <Grid container maxWidth={'900px'} minWidth={'600px'}>
       <GridRow row={wordGrid[0]}></GridRow>
