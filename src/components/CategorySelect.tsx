@@ -1,26 +1,28 @@
 // TODO: this should allow selection from some prechosen categories
 import React, { useState } from 'react';
 import { Autocomplete, TextField } from '@mui/material';
+import { presetCategories } from './presetCategories';
 
 export function CategorySelect({
+  category,
   setCategory,
-  options,
 }: {
+  category: string;
   setCategory: any;
-  options: string[];
 }) {
-  const [selectedCategory, setSelectedCategory] = useState();
+  const options = Object.keys(presetCategories);
 
   return (
     <Autocomplete
       disablePortal
-      value={selectedCategory}
+      value={category}
       options={options}
       sx={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label="Category" />}
       onChange={(e: any) => {
-        setSelectedCategory(e.target.value);
-        setCategory(options[e.target.value]);
+        console.dir('e');
+        console.dir(e);
+        setCategory(e.target.innerText);
       }}
     />
   );
