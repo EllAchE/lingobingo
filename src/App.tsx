@@ -67,7 +67,7 @@ function App() {
         margin="auto"
         align="center"
       >
-        Lingo Bingo
+        Lingo Bingo - {category}
       </Typography>
       <BingoCard
         bingoCard={bingoCard}
@@ -77,7 +77,7 @@ function App() {
       <SideBar
         category={category}
         setCategory={changeCategory}
-        setWordGrid={setBingoCard}
+        setBingoCard={setBingoCard}
         clearCellSelections={clearCellSelections}
       />
       <WaterMark />

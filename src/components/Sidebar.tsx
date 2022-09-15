@@ -7,16 +7,17 @@ import { CustomInput } from './CustomInput';
 export function SideBar({
   category,
   setCategory,
-  setWordGrid,
+  setBingoCard,
   clearCellSelections,
 }: {
   category: string;
   setCategory: any;
-  setWordGrid: any;
+  setBingoCard: any;
   clearCellSelections: any;
 }) {
   return (
     <Box sx={{ position: 'fixed', top: '35%', left: 8, width: 300 }}>
+      <CustomInput setBingoCard={setBingoCard} />
       <CategorySelect category={category} setCategory={setCategory} />
       <Button
         sx={{ marginTop: 2 }}
@@ -27,7 +28,6 @@ export function SideBar({
       >
         Randomize Card
       </Button>
-      <CustomInput setWordGrid={setWordGrid} />
       <Button
         sx={{ marginTop: 2 }}
         onClick={() => {
