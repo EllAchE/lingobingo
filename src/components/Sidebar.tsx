@@ -8,25 +8,35 @@ export function SideBar({
   category,
   setCategory,
   setWordGrid,
+  clearCellSelections,
 }: {
   category: string;
   setCategory: any;
   setWordGrid: any;
+  clearCellSelections: any;
 }) {
   return (
-    <Box sx={{ position: 'fixed', top: '40%', left: 8, width: 300 }}>
+    <Box sx={{ position: 'fixed', top: '35%', left: 8, width: 300 }}>
+      <CategorySelect category={category} setCategory={setCategory} />
       <Button
+        sx={{ marginTop: 2 }}
         onClick={() => {
-          //   //@ts-ignore
-          //   setWordGrid(...createGrid(presetCategories[category]).wordGrid);
           setCategory(category);
         }}
         variant={'contained'}
       >
-        Generate New Card
+        Randomize Card
       </Button>
-      <CategorySelect category={category} setCategory={setCategory} />
       <CustomInput setWordGrid={setWordGrid} />
+      <Button
+        sx={{ marginTop: 2 }}
+        onClick={() => {
+          clearCellSelections();
+        }}
+        variant={'contained'}
+      >
+        Clear Selections
+      </Button>
     </Box>
   );
 }

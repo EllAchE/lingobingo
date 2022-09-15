@@ -6,3 +6,9 @@ export interface Category {
 type StringRow = string[];
 
 export type BingoCardType = StringRow[];
+
+export interface SquareState {
+  isClicked?: boolean;
+  // text: string;
+  // position: number;
+}

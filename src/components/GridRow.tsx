@@ -3,12 +3,20 @@ import Grid from '@mui/material/Grid';
 import GridCell from './GridCell';
 
 export default function GridRow(props: any) {
-  // console.dir('row');
-  // console.dir(props);
+  const { row, rowIndex } = props;
   return (
     <Grid container justifyContent={'center'}>
-      {props.row.map((cellText: string) => {
-        return <GridCell item>{cellText}</GridCell>;
+      {row.map((cellText: string, cellIndex: number) => {
+        return (
+          <GridCell
+            setSquareStates={props.setSquareStates}
+            squareStates={props.squareStates}
+            position={5 * rowIndex + cellIndex}
+            item
+          >
+            {cellText}
+          </GridCell>
+        );
       })}
     </Grid>
   );

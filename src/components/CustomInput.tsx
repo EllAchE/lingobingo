@@ -6,11 +6,9 @@ import extractCategories from '../scripts/extractCategories';
 export function CustomInput({ setWordGrid }: { setWordGrid: any }) {
   return (
     <TextField
-      label="Create your own!"
+      label="Create your own card!"
       sx={{ marginTop: 2 }}
       onSubmit={(e: FormEvent<HTMLDivElement>) => {
-        // console.dir('e.target');
-        // console.dir(e.target);
         const cats = extractCategories('a');
         if (cats) {
           setWordGrid(createBingoCard(cats).bingoCard);

@@ -28,7 +28,7 @@ const Corporate: Category = {
     'Acronym with more than 4 lettersa',
     'More than 3 acronyms in one sentence',
   ],
-  freeParking: '',
+  freeParking: 'FREE TESLA PARKING',
 };
 
 const TechBro: Category = {

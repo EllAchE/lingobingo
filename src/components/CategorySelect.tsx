@@ -14,7 +14,7 @@ export function CategorySelect({
 
   return (
     <Autocomplete
-      sx={{ marginTop: 2 }}
+      sx={{ maxWidth: 195 }}
       disablePortal
       value={category}
       options={options}

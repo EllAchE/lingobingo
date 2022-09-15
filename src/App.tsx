@@ -1,44 +1,85 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Box, Typography } from '@mui/material';
 import { presetCategories } from './scripts/presetCategories';
 import { createBingoCard } from './scripts/createGrid';
 import { SideBar } from './components/Sidebar';
 import WaterMark from './components/WaterMark';
-import { BingoCardType } from './types';
+import { BingoCardType, SquareState } from './types';
 import { BingoCard } from './components/BingoCard';
 
 function App() {
   const [category, setCategory] = useState<string>('Corporate');
-  const [wordGrid, setWordGrid] = useState<BingoCardType>(
+  const [bingoCard, setBingoCard] = useState<BingoCardType>(
     //@ts-ignore
-    createBingoCard(presetCategories[category]).wordGrid
+    createBingoCard(presetCategories[category]).bingoCard
   );
+  const [squareStates, setSquareStates] = useState<SquareState[]>([
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+  ]);
 
-  const changeCategory = (newCategory: string) => {
+  function clearCellSelections() {
+    const newSquareStates = squareStates?.map((square: SquareState) => {
+      square.isClicked = false;
+      return square;
+    });
+    setSquareStates([...newSquareStates]);
+  }
+
+  function changeCategory(newCategory: string) {
     setCategory(newCategory);
     //@ts-ignore
-    setWordGrid(createBingoCard(presetCategories[newCategory]).wordGrid);
-  };
+    setBingoCard(createBingoCard(presetCategories[newCategory]).bingoCard);
+    clearCellSelections();
+  }
+
+  //useEffect(() => {}, [squareStates]);
 
   return (
     <Box>
       <Typography
         variant="h3"
-        sx={{ paddingBottom: 2 }}
+        sx={{ paddingBottom: 2, paddingTop: 2, fontFamily: 'Helvetica' }}
         margin="auto"
         align="center"
       >
         Lingo Bingo
       </Typography>
-      <BingoCard bingoCard={wordGrid} />
+      <BingoCard
+        bingoCard={bingoCard}
+        setSquareStates={setSquareStates}
+        squareStates={squareStates}
+      />
       <SideBar
         category={category}
         setCategory={changeCategory}
-        setWordGrid={setWordGrid}
+        setWordGrid={setBingoCard}
+        clearCellSelections={clearCellSelections}
       />
-      {/* <CategorySelect category={category} setCategory={setCategory} />
-      <CustomInput /> */}
       <WaterMark />
     </Box>
   );
