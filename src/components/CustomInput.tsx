@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 import React, { FormEvent } from 'react';
-import { createGrid } from '../scripts/createGrid';
+import { createBingoCard } from '../scripts/createGrid';
 import extractCategories from '../scripts/extractCategories';
 
 export function CustomInput({ setWordGrid }: { setWordGrid: any }) {
@@ -13,7 +13,7 @@ export function CustomInput({ setWordGrid }: { setWordGrid: any }) {
         // console.dir(e.target);
         const cats = extractCategories('a');
         if (cats) {
-          setWordGrid(createGrid(cats).wordGrid);
+          setWordGrid(createBingoCard(cats).bingoCard);
         } else {
           console.warn(
             'Invalid input, must be at least 25 comma separated words'

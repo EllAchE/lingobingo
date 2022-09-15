@@ -14,7 +14,11 @@ export default function GridCell(props: any) {
       border={1}
       height={'120px'}
       textAlign={'center'}
-      sx={{ backgroundColor: isClicked ? 'red' : 'white' }}
+      sx={{
+        backgroundColor: isClicked ? '#3252a8' : undefined,
+        color: isClicked ? 'white' : undefined,
+        'border-color': 'black',
+      }} // light blue
       onClick={() => {
         setIsClicked(!isClicked);
       }}

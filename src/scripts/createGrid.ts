@@ -1,24 +1,34 @@
-export function createGrid(words: string[]) {
+import { BingoCardType, Category } from '../types';
+
+export function createBingoCard(category: Category): {
+  bingoCard: BingoCardType;
+  filename: string;
+} {
   let filename: string = '';
   let row: number = 0;
-  let wordGrid: any = [[], [], [], [], []];
+  let bingoCard: any = [[], [], [], [], []];
 
-  let wordsCopy = [...words];
+  const { squares, freeParking } = category;
+
+  let wordsCopy = [...squares];
 
   while (row < 5) {
     let word: string[] = wordsCopy.splice(
       Math.floor(Math.random() * wordsCopy.length),
       1
     );
-    wordGrid[row].push(word[0]);
+    bingoCard[row].push(word[0]);
     filename += word[0];
-    if (wordGrid[row].length >= 5) {
+    if (bingoCard[row].length >= 5) {
       row += 1;
     }
   }
 
-  wordGrid[2][2] = 'FREE TESLA PARKING';
+  if (freeParking) {
+    bingoCard[2][2] = freeParking;
+  }
+
   filename += '.csv';
 
-  return { wordGrid, filename };
+  return { bingoCard, filename };
 }

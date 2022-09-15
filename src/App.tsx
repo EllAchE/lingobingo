@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Box, Typography } from '@mui/material';
-import { BingoCard } from './components/BingoCard';
 import { presetCategories } from './scripts/presetCategories';
-import { createGrid } from './scripts/createGrid';
+import { createBingoCard } from './scripts/createGrid';
 import { SideBar } from './components/Sidebar';
+import WaterMark from './components/WaterMark';
+import { BingoCardType } from './types';
+import { BingoCard } from './components/BingoCard';
 
 function App() {
   const [category, setCategory] = useState<string>('Corporate');
-  const [wordGrid, setWordGrid] = useState<string[]>(
+  const [wordGrid, setWordGrid] = useState<BingoCardType>(
     //@ts-ignore
-    createGrid(presetCategories[category]).wordGrid
+    createBingoCard(presetCategories[category]).wordGrid
   );
 
   const changeCategory = (newCategory: string) => {
     setCategory(newCategory);
     //@ts-ignore
-    setWordGrid(createGrid(presetCategories[newCategory]).wordGrid);
+    setWordGrid(createBingoCard(presetCategories[newCategory]).wordGrid);
   };
 
   return (
@@ -29,7 +31,7 @@ function App() {
       >
         Lingo Bingo
       </Typography>
-      <BingoCard wordGrid={wordGrid} />
+      <BingoCard bingoCard={wordGrid} />
       <SideBar
         category={category}
         setCategory={changeCategory}
@@ -37,6 +39,7 @@ function App() {
       />
       {/* <CategorySelect category={category} setCategory={setCategory} />
       <CustomInput /> */}
+      <WaterMark />
     </Box>
   );
 }

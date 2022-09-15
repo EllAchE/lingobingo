@@ -1,8 +1,10 @@
-export default function extractCategories(input: string) {
+import { Category } from '../types';
+
+export default function extractCategories(input: string): Category | false {
   if (!input) return false;
-  const userCategories: string[] = input.split(',');
-  if (userCategories.length < 25) {
+  const userSquares: string[] = input.split(',');
+  if (userSquares.length < 25) {
     return false;
   }
-  return userCategories;
+  return { squares: userSquares };
 }
