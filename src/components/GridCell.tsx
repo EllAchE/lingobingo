@@ -1,15 +1,13 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
-import { setCard } from '../store/cardSlice';
+import { setCard, setState } from '../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import checkBingo from '../scripts/checkBingo';
 
 export default function GridCell({ position, children }: any) {
   const dis = useDispatch();
-  const cardState = useSelector((state: any) => state.card.card);
-
-  console.dir(position);
-  console.dir(cardState);
+  const state = useSelector((state: any) => state.card);
 
   return (
     <Grid
@@ -22,14 +20,24 @@ export default function GridCell({ position, children }: any) {
       height={'120px'}
       textAlign={'center'}
       sx={{
-        backgroundColor: cardState[position].isClicked ? '#3252a8' : undefined,
-        color: cardState[position]?.isClicked ? 'white' : undefined,
+        backgroundColor: state.card[position].isClicked ? '#3252a8' : undefined,
+        color: state.card[position]?.isClicked ? 'white' : undefined,
         'border-color': 'black',
       }} // light blue
       onClick={() => {
-        const stateCopy = JSON.parse(JSON.stringify(cardState));
-        stateCopy[position].isClicked = !stateCopy[position].isClicked;
-        dis(setCard(stateCopy));
+        const stateCopy = JSON.parse(JSON.stringify(state));
+        stateCopy.card[position].isClicked =
+          !stateCopy.card[position].isClicked;
+        if (!stateCopy.isBingo) {
+          const bingoCount = checkBingo(stateCopy.card);
+          if (typeof bingoCount != 'number') {
+            stateCopy.isBingo = true;
+            alert('BINGO');
+          } else {
+            stateCopy.fewestRemaining = bingoCount;
+          }
+        }
+        dis(setState(stateCopy));
       }}
     >
       <Typography sx={{ paddingX: 1 }} variant={'body1'}>

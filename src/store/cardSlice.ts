@@ -30,19 +30,25 @@ export const cardSlice = createSlice({
       { isClicked: false },
       { isClicked: false },
     ],
+    isBingo: false,
+    fewestRemaining: 5,
   },
   reducers: {
+    setState: (state, action) => {
+      state.card = action.payload.card;
+      state.isBingo = action.payload.isBingo;
+      state.fewestRemaining = action.payload.fewestRemaining;
+    },
     setCard: (state, action) => {
       state.card = action.payload;
     },
-    modifyPosition: (state, action) => {
-      const { position, newPositionValue } = action.payload;
-      state.card[position] = newPositionValue;
+    setIsBingo: (state, action) => {
+      state.isBingo = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setCard } = cardSlice.actions;
+export const { setCard, setIsBingo, setState } = cardSlice.actions;
 
 export default cardSlice.reducer;

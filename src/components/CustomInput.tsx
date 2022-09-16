@@ -2,9 +2,12 @@ import { Box, Button, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { createBingoCard } from '../scripts/createGrid';
 import extractCategories from '../scripts/extractCategories';
+import { useDispatch } from 'react-redux';
+import { setCard } from '../store/cardSlice';
 
 export function CustomInput({ setBingoCard }: { setBingoCard: any }) {
   const [userInput, setUserInput] = useState('');
+  const dis = useDispatch();
   return (
     <Box>
       <TextField
@@ -28,7 +31,7 @@ export function CustomInput({ setBingoCard }: { setBingoCard: any }) {
 
           const cats = extractCategories(userInput);
           if (cats) {
-            setBingoCard(createBingoCard(cats).bingoCard);
+            dis(setCard(createBingoCard(cats).bingoCard));
           } else {
             alert('Invalid input, must be at least 25 comma-separated phrases');
           }

@@ -29,7 +29,5 @@ export function createBingoCard(category: Category): {
   }
 
   filename += '.csv';
-  console.log('ret bin');
-  console.dir(bingoCard);
   return { bingoCard, filename };
 }

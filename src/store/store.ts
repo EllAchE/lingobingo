@@ -12,5 +12,5 @@ export default configureStore({
  * Usage:
  * const dis = useDispatch();
  * dis(valueSetFunction(buttonText));
- * const cardState = useSelector((state: any) => state.card.card);
+ * const state = useSelector((state: any) => state.identifier);
  */

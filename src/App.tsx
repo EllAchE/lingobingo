@@ -3,12 +3,13 @@ import './App.css';
 import { Box, Typography } from '@mui/material';
 import { presetCategories } from './scripts/presetCategories';
 import { createBingoCard } from './scripts/createGrid';
-import { SideBar } from './components/Sidebar';
+import { LeftSideBar } from './components/LeftSidebar';
 import WaterMark from './components/WaterMark';
 import { BingoCardType, SquareState } from './types';
 import { BingoCard } from './components/BingoCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCard } from './store/cardSlice';
+import { setCard, setState } from './store/cardSlice';
+import RightSideBar from './components/RightSidebar';
 
 function App() {
   const [category, setCategory] = useState<string>('Corporate');
@@ -18,22 +19,24 @@ function App() {
   );
 
   const dis = useDispatch();
-  const cardState = useSelector((state: any) => state.card.card);
+  const state = useSelector((state: any) => state.card);
 
-  function clearCellSelections() {
-    const newState = JSON.parse(JSON.stringify(cardState));
-    newState?.map((square: SquareState) => {
+  function resetCard() {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState?.card?.map((square: SquareState) => {
       square.isClicked = false;
       return square;
     });
-    dis(setCard([...newState]));
+    newState.isBingo = false;
+    newState.fewestRemaining = 5;
+    dis(setState(newState));
   }
 
   function changeCategory(newCategory: string) {
     setCategory(newCategory);
     //@ts-ignore
     dis(setCard(createBingoCard(presetCategories[newCategory]).bingoCard));
-    clearCellSelections();
+    resetCard();
   }
 
   //useEffect(() => {}, [squareStates]);
@@ -49,12 +52,12 @@ function App() {
         Lingo Bingo - {category}
       </Typography>
       <BingoCard bingoCard={bingoCard} />
-      <SideBar
+      <LeftSideBar
         category={category}
         setCategory={changeCategory}
-        setBingoCard={setBingoCard}
-        clearCellSelections={clearCellSelections}
+        resetCard={resetCard}
       />
+      <RightSideBar setBingoCard={setBingoCard} />
       <WaterMark />
     </Box>
   );
