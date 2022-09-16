@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Box, Typography } from '@mui/material';
 import { presetCategories } from './scripts/presetCategories';
@@ -7,6 +7,8 @@ import { SideBar } from './components/Sidebar';
 import WaterMark from './components/WaterMark';
 import { BingoCardType, SquareState } from './types';
 import { BingoCard } from './components/BingoCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCard } from './store/cardSlice';
 
 function App() {
   const [category, setCategory] = useState<string>('Corporate');
@@ -14,46 +16,23 @@ function App() {
     //@ts-ignore
     createBingoCard(presetCategories[category]).bingoCard
   );
-  const [squareStates, setSquareStates] = useState<SquareState[]>([
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-  ]);
+
+  const dis = useDispatch();
+  const cardState = useSelector((state: any) => state.card.card);
 
   function clearCellSelections() {
-    const newSquareStates = squareStates?.map((square: SquareState) => {
+    const newState = JSON.parse(JSON.stringify(cardState));
+    newState?.map((square: SquareState) => {
       square.isClicked = false;
       return square;
     });
-    setSquareStates([...newSquareStates]);
+    dis(setCard([...newState]));
   }
 
   function changeCategory(newCategory: string) {
     setCategory(newCategory);
     //@ts-ignore
-    setBingoCard(createBingoCard(presetCategories[newCategory]).bingoCard);
+    dis(setCard(createBingoCard(presetCategories[newCategory]).bingoCard));
     clearCellSelections();
   }
 
@@ -69,11 +48,7 @@ function App() {
       >
         Lingo Bingo - {category}
       </Typography>
-      <BingoCard
-        bingoCard={bingoCard}
-        setSquareStates={setSquareStates}
-        squareStates={squareStates}
-      />
+      <BingoCard bingoCard={bingoCard} />
       <SideBar
         category={category}
         setCategory={changeCategory}

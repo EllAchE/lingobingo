@@ -8,12 +8,7 @@ export default function GridRow(props: any) {
     <Grid container justifyContent={'center'}>
       {row.map((cellText: string, cellIndex: number) => {
         return (
-          <GridCell
-            setSquareStates={props.setSquareStates}
-            squareStates={props.squareStates}
-            position={5 * rowIndex + cellIndex}
-            item
-          >
+          <GridCell position={5 * rowIndex + cellIndex} item>
             {cellText}
           </GridCell>
         );

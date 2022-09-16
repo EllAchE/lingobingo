@@ -1,5 +1,6 @@
 import { Category } from '../types';
 
+// done
 const Corporate: Category = {
   squares: [
     'Someone wearing patagonia',
@@ -31,6 +32,7 @@ const Corporate: Category = {
   freeParking: 'FREE TESLA PARKING',
 };
 
+// done
 const TechBro: Category = {
   squares: [
     'Mentions their TC',
@@ -60,10 +62,62 @@ const TechBro: Category = {
     'Listens to Joe Rogan',
     'Works (or wants to) at FAANG',
   ],
+  freeParking: 'FREE PARKING: Leetcode Account',
+};
+
+const FinanceBro: Category = {
+  squares: [],
+  freeParking: 'FREE PARKING: Member of WSB',
+};
+
+const FratBro: Category = {
+  squares: [],
+  freeParking: 'FREE PARKING: Shotgunned Beer',
+};
+
+const C3: Category = {
+  squares: [],
+  freeParking: 'FREE PARKING: Shotgunned Beer',
+};
+
+// done
+const ABG: Category = {
+  squares: [
+    'Likes Boba',
+    'Likes to Rave',
+    'Has tattoo(s)',
+    'Fake eyelashes',
+    'Duck Face Selfie',
+    "Goes to Dave & Buster's",
+    'Cries to Illenium',
+    'Toxic Relationship',
+    '"Shoulder Ride"',
+    'Attracted to red flags',
+    'Stuffed animal backpack',
+    'Drinks Hennessy',
+    'Dyed Hair',
+    'Photo with sports car',
+    'Went to San Jose State or UC system',
+    'Went to Coachella',
+    'Rolled on a weekday',
+    'In Asian sorority or FSA',
+    'Boyfriend also has tattoo',
+    'Dab Pen',
+    'Vapes',
+    'Female',
+    'Says "Starbies"',
+    'BTS concert',
+    'Pigtails or braids',
+  ],
+  freeParking: 'FREE PARKING: Asian',
+};
+
+const JehovahsWitness: Category = {
+  squares: [],
   freeParking: '',
 };
 
-const Political: Category = {
+const Politician: Category = {
   squares: [
     '',
     '',
@@ -127,33 +181,33 @@ const Karen: Category = {
 
 const Weeb: Category = {
   squares: [
-    'Someone wearing patagonia',
-    'Someone wearing allbirds',
-    'Airpods or case visible',
-    'RSUs mentioned',
-    'Earnings report',
-    'Vest and rest',
-    '1 billion in the bank',
-    'Swimply',
-    'Circle back',
-    'Presentation of more than 40 slides',
-    'Catered Food',
-    'CEO high fives someone',
-    'Apple watch',
-    'Mandarin spoken',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Revenue Forecast',
-    'Any or Q1, Q2, Q3,Q4',
-    'Acronym with more than 4 lettersa',
-    'Acronym with more than 4 lettersa',
-    'More than 3 acronyms in one sentence',
+    'Says "Naruhodo"',
+    'Wants to go to Japan',
+    'Says "Waifu"',
+    'Wants to go to Comic Con',
+    '"The manga is better"',
+    'Lives with parents',
+    'Owned a fedora',
+    '"I\'m learning Japanese"',
+    'Plays Pokemon Go',
+    'Has crunchyroll account',
+    'Anime Theme Music playlist',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
   ],
-  freeParking: '',
+  freeParking: 'FREE PARKING: Watches anime',
 };
 
 const Empty: Category = { squares: [], freeParking: '' };
@@ -161,7 +215,12 @@ const Empty: Category = { squares: [], freeParking: '' };
 export const presetCategories = {
   Corporate,
   TechBro,
-  Political,
+  Political: Politician,
   Karen,
   Weeb,
+  FinanceBro,
+  FratBro,
+  JehovahsWitness,
+  ABG,
+  C3,
 };

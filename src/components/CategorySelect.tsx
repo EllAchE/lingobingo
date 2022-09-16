@@ -10,7 +10,8 @@ export function CategorySelect({
   category: string;
   setCategory: any;
 }) {
-  const options = Object.keys(presetCategories);
+  const options: string[] = Object.keys(presetCategories);
+  options.sort();
 
   return (
     <Autocomplete

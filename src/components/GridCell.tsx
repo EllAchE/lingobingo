@@ -1,14 +1,16 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
+import { setCard } from '../store/cardSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function GridCell({
-  setSquareStates,
-  squareStates,
-  position,
-  children,
-}: any) {
-  console.log('comp');
+export default function GridCell({ position, children }: any) {
+  const dis = useDispatch();
+  const cardState = useSelector((state: any) => state.card.card);
+
+  console.dir(position);
+  console.dir(cardState);
+
   return (
     <Grid
       container
@@ -20,21 +22,14 @@ export default function GridCell({
       height={'120px'}
       textAlign={'center'}
       sx={{
-        backgroundColor: squareStates[position].isClicked
-          ? '#3252a8'
-          : undefined,
-        color: squareStates[position]?.isClicked ? 'white' : undefined,
+        backgroundColor: cardState[position].isClicked ? '#3252a8' : undefined,
+        color: cardState[position]?.isClicked ? 'white' : undefined,
         'border-color': 'black',
       }} // light blue
       onClick={() => {
-        squareStates[position].isClicked = !squareStates[position].isClicked;
-
-        console.dir('bef');
-        console.dir(squareStates);
-        setSquareStates([...squareStates]);
-        console.dir(squareStates);
-
-        console.dir('aff');
+        const stateCopy = JSON.parse(JSON.stringify(cardState));
+        stateCopy[position].isClicked = !stateCopy[position].isClicked;
+        dis(setCard(stateCopy));
       }}
     >
       <Typography sx={{ paddingX: 1 }} variant={'body1'}>
