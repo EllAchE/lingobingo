@@ -11,6 +11,7 @@ export const cardSlice = createSlice({
     showBingoEffects: false,
     fewestRemaining: 5,
     category: 'Corporate',
+    exisitingCategories: presetCategories,
   },
   reducers: {
     setState: (state, action) => {

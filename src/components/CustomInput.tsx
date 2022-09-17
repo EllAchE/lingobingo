@@ -11,46 +11,45 @@ export function CustomInput() {
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
   return (
-    <Box>
-      <TextField
-        fullWidth
-        multiline
-        maxRows={5}
-        sx={{
-          borderColor: state.showBingoEffects ? 'white' : 'black',
-          color: state.showBingoEffects ? 'white' : 'black',
-        }}
-        label="Create your own card!"
-        onChange={(
-          e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-        ) => {
-          setUserInput(e.target.value);
-        }}
-        value={userInput}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton
-                onClick={() => {
-                  if (!userInput) {
-                    return;
-                  }
-                  const cats = extractCategories(userInput);
-                  if (cats) {
-                    dis(setCard(createBingoCard(cats).bingoCard));
-                  } else {
-                    alert(
-                      'Invalid input, must be at least 25 comma-separated phrases'
-                    );
-                  }
-                }}
-              >
-                <ArrowForwardIcon sx={{ fontSize: 20 }} />
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
-      ></TextField>
-    </Box>
+    <TextField
+      multiline
+      maxRows={5}
+      size="small"
+      sx={{
+        borderColor: state.showBingoEffects ? 'white' : 'black',
+        color: state.showBingoEffects ? 'white' : 'black',
+        width: '80%',
+      }}
+      label="Create your own card!"
+      onChange={(
+        e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+      ) => {
+        setUserInput(e.target.value);
+      }}
+      value={userInput}
+      InputProps={{
+        endAdornment: (
+          <InputAdornment position="end">
+            <IconButton
+              onClick={() => {
+                if (!userInput) {
+                  return;
+                }
+                const cats = extractCategories(userInput);
+                if (cats) {
+                  dis(setCard(createBingoCard(cats).bingoCard));
+                } else {
+                  alert(
+                    'Invalid input, must be at least 25 semicolon-separated phrases'
+                  );
+                }
+              }}
+            >
+              <ArrowForwardIcon sx={{ fontSize: 20 }} />
+            </IconButton>
+          </InputAdornment>
+        ),
+      }}
+    ></TextField>
   );
 }

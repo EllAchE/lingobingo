@@ -13,13 +13,20 @@ export function openGithub() {
 
 export default function WaterMark() {
   return (
-    <Box sx={{ bottom: 0, height: 40, width: '100%', position: 'fixed' }}>
+    <Box
+      sx={{
+        bottom: 0,
+        width: '100%',
+        position: 'fixed',
+        zIndex: -1,
+      }}
+    >
       <Grid>
         <IconButton onClick={openTwitter}>
-          <TwitterIcon />
+          <TwitterIcon sx={{ fontSize: 40 }} />
         </IconButton>
         <IconButton onClick={openGithub}>
-          <GitHubIcon />
+          <GitHubIcon sx={{ fontSize: 40 }} />
         </IconButton>
       </Grid>
       <BingoCount />

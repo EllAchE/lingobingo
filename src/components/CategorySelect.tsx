@@ -14,12 +14,11 @@ export function CategorySelect() {
 
   return (
     <Autocomplete
-      sx={{
-        width: 195,
-      }}
+      sx={{ width: '80%' }}
       disablePortal
       value={state.category}
       options={options}
+      size="small"
       renderInput={(params) => (
         <TextField {...params} label="Choose Category" />
       )}
