@@ -1,9 +1,10 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Box, IconButton, InputAdornment, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { createBingoCard } from '../scripts/createGrid';
 import extractCategories from '../scripts/extractCategories';
 import { useDispatch } from 'react-redux';
 import { setCard } from '../store/cardSlice';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export function CustomInput() {
   const [userInput, setUserInput] = useState('');
@@ -15,30 +16,36 @@ export function CustomInput() {
         multiline
         maxRows={5}
         label="Create your own card!"
-        sx={{ marginTop: 2 }}
         onChange={(
           e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
         ) => {
           setUserInput(e.target.value);
         }}
         value={userInput}
-      ></TextField>
-      <Button
-        onClick={() => {
-          if (!userInput) {
-            return;
-          }
-
-          const cats = extractCategories(userInput);
-          if (cats) {
-            dis(setCard(createBingoCard(cats).bingoCard));
-          } else {
-            alert('Invalid input, must be at least 25 comma-separated phrases');
-          }
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                onClick={() => {
+                  if (!userInput) {
+                    return;
+                  }
+                  const cats = extractCategories(userInput);
+                  if (cats) {
+                    dis(setCard(createBingoCard(cats).bingoCard));
+                  } else {
+                    alert(
+                      'Invalid input, must be at least 25 comma-separated phrases'
+                    );
+                  }
+                }}
+              >
+                <ArrowForwardIcon sx={{ fontSize: 24 }} />
+              </IconButton>
+            </InputAdornment>
+          ),
         }}
-      >
-        Submit
-      </Button>
+      ></TextField>
     </Box>
   );
 }
