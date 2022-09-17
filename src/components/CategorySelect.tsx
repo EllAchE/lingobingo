@@ -1,15 +1,14 @@
 // TODO: this should allow selection from some prechosen categories
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
-import { presetCategories } from '../scripts/presetCategories';
+import { presetCategories } from '../constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCard, setCategory } from '../store/cardSlice';
+import { createBingoCard } from '../scripts/createGrid';
 
-export function CategorySelect({
-  category,
-  setCategory,
-}: {
-  category: string;
-  setCategory: any;
-}) {
+export function CategorySelect() {
+  const dis = useDispatch();
+  const state = useSelector((state: any) => state.card);
   const options: string[] = Object.keys(presetCategories);
   options.sort();
 
@@ -17,14 +16,20 @@ export function CategorySelect({
     <Autocomplete
       sx={{ maxWidth: 195 }}
       disablePortal
-      value={category}
+      value={state.category}
       options={options}
       renderInput={(params) => (
         <TextField {...params} label="Choose Category" />
       )}
       onChange={(e: any) => {
         if (e.target.innerText) {
-          setCategory(e.target.innerText);
+          dis(setCategory(e.target.innerText));
+          dis(
+            setCard(
+              //@ts-ignore
+              createBingoCard(presetCategories[e.target.innerText]).bingoCard
+            )
+          );
         }
       }}
     />

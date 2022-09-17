@@ -37,7 +37,7 @@ export default function checkBingo(squares: any[]): boolean | number {
   const overallMin = Math.min(...rows, ...cols, diagTopLeft, diagBotLeft);
 
   if (overallMin == 0) {
-    return true;
+    return 0;
   }
   return overallMin;
 }

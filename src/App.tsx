@@ -1,45 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Box, Typography } from '@mui/material';
-import { presetCategories } from './scripts/presetCategories';
+import { emptyCellStates, presetCategories } from './constants';
 import { createBingoCard } from './scripts/createGrid';
 import { LeftSideBar } from './components/LeftSidebar';
 import WaterMark from './components/WaterMark';
 import { BingoCardType, SquareState } from './types';
 import { BingoCard } from './components/BingoCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCard, setState } from './store/cardSlice';
+import { setCellStates, setState } from './store/cardSlice';
 import RightSideBar from './components/RightSidebar';
+import FireworksAndConfetti from './components/particles/FireworksAndConfetti';
 
 function App() {
-  const [category, setCategory] = useState<string>('Corporate');
-  const [bingoCard, setBingoCard] = useState<BingoCardType>(
-    //@ts-ignore
-    createBingoCard(presetCategories[category]).bingoCard
-  );
-
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
 
-  function resetCard() {
-    const newState = JSON.parse(JSON.stringify(state));
-    newState?.card?.map((square: SquareState) => {
-      square.isClicked = false;
-      return square;
-    });
-    newState.isBingo = false;
-    newState.fewestRemaining = 5;
-    dis(setState(newState));
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+  console.log('appp resssss');
+
+  function resetCardCells() {
+    dis(setCellStates([...emptyCellStates]));
   }
 
-  function changeCategory(newCategory: string) {
-    setCategory(newCategory);
+  const [bingoCard, setBingoCard] = useState<BingoCardType>(
     //@ts-ignore
-    dis(setCard(createBingoCard(presetCategories[newCategory]).bingoCard));
-    resetCard();
-  }
+    createBingoCard(presetCategories[state.category]).bingoCard
+  );
 
-  //useEffect(() => {}, [squareStates]);
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   setBingoCard(createBingoCard(presetCategories[state.category]).bingoCard);
+  // }, []);
 
   return (
     <Box>
@@ -49,16 +54,13 @@ function App() {
         margin="auto"
         align="center"
       >
-        Lingo Bingo - {category}
+        Lingo Bingo - {state.category}
       </Typography>
-      <BingoCard bingoCard={bingoCard} />
-      <LeftSideBar
-        category={category}
-        setCategory={changeCategory}
-        resetCard={resetCard}
-      />
+      <BingoCard />
+      <LeftSideBar resetCard={resetCardCells} setBingoCard={setBingoCard} />
       <RightSideBar setBingoCard={setBingoCard} />
       <WaterMark />
+      {state.showBingoEffects && <FireworksAndConfetti />}
     </Box>
   );
 }

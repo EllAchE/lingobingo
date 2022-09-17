@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
-import { setCard, setState } from '../store/cardSlice';
+import { setShowBingoEffects, setState } from '../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import checkBingo from '../scripts/checkBingo';
 
@@ -12,6 +12,7 @@ export default function GridCell({ position, children }: any) {
   return (
     <Grid
       container
+      item
       justifyContent={'space-around'}
       justifyItems={'center'}
       alignItems={'center'}
@@ -19,23 +20,26 @@ export default function GridCell({ position, children }: any) {
       border={1}
       height={'120px'}
       textAlign={'center'}
+      key={position}
       sx={{
-        backgroundColor: state.card[position].isClicked ? '#3252a8' : undefined,
-        color: state.card[position]?.isClicked ? 'white' : undefined,
-        'border-color': 'black',
+        backgroundColor: state.cellStates[position].isClicked
+          ? '#3252a8'
+          : undefined,
+        color: state.cellStates[position]?.isClicked ? 'white' : undefined,
+        borderColor: 'black',
       }} // light blue
       onClick={() => {
         const stateCopy = JSON.parse(JSON.stringify(state));
-        stateCopy.card[position].isClicked =
-          !stateCopy.card[position].isClicked;
+        stateCopy.cellStates[position].isClicked =
+          !stateCopy.cellStates[position].isClicked;
         if (!stateCopy.isBingo) {
-          const bingoCount = checkBingo(stateCopy.card);
-          if (typeof bingoCount != 'number') {
+          const bingoCount = checkBingo(stateCopy.cellStates);
+          if (bingoCount == 0) {
             stateCopy.isBingo = true;
-            alert('BINGO');
-          } else {
-            stateCopy.fewestRemaining = bingoCount;
+            stateCopy.showBingoEffects = true;
+            setTimeout(() => dis(setShowBingoEffects(false)), 5000);
           }
+          stateCopy.fewestRemaining = bingoCount;
         }
         dis(setState(stateCopy));
       }}

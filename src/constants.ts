@@ -1,4 +1,4 @@
-import { Category } from '../types';
+import { Category } from './types';
 
 // done
 const Corporate: Category = {
@@ -97,7 +97,7 @@ const ABG: Category = {
     'Drinks Hennessy',
     'Dyed Hair',
     'Photo with sports car',
-    'Went to San Jose State or UC system',
+    'Goes to San Jose State or UC system',
     'Went to Coachella',
     'Rolled on a weekday',
     'In Asian sorority or FSA',
@@ -106,7 +106,7 @@ const ABG: Category = {
     'Vapes',
     'Female',
     'Says "Starbies"',
-    'BTS concert',
+    'Has made Kandi',
     'Pigtails or braids',
   ],
   freeParking: 'FREE PARKING: Asian',
@@ -224,3 +224,31 @@ export const presetCategories = {
   ABG,
   C3,
 };
+
+export const emptyCellStates = [
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+  { isClicked: false },
+];
