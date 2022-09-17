@@ -5,10 +5,8 @@ import App from './App';
 import reportWebVitals from './misc/reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import { DefaultStyles } from './styles/GlobalStyles';
-import { ThemeProvider } from '@mui/system';
-import { defaultTheme } from './styles/MuiTheme';
 import WaterMark from './components/WaterMark';
+import StyleProvider from './styles/StyleProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,7 +14,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <DefaultStyles />
       <App />
       <WaterMark />
     </Provider>

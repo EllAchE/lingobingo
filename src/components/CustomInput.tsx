@@ -2,19 +2,24 @@ import { Box, IconButton, InputAdornment, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { createBingoCard } from '../scripts/createGrid';
 import extractCategories from '../scripts/extractCategories';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCard } from '../store/cardSlice';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export function CustomInput() {
   const [userInput, setUserInput] = useState('');
   const dis = useDispatch();
+  const state = useSelector((state: any) => state.card);
   return (
     <Box>
       <TextField
         fullWidth
         multiline
         maxRows={5}
+        sx={{
+          borderColor: state.showBingoEffects ? 'white' : 'black',
+          color: state.showBingoEffects ? 'white' : 'black',
+        }}
         label="Create your own card!"
         onChange={(
           e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -40,7 +45,7 @@ export function CustomInput() {
                   }
                 }}
               >
-                <ArrowForwardIcon sx={{ fontSize: 24 }} />
+                <ArrowForwardIcon sx={{ fontSize: 20 }} />
               </IconButton>
             </InputAdornment>
           ),

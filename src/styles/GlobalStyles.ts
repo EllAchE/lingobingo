@@ -3,7 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 const getGlobalStyle = (themeName: string) => {
   switch (themeName) {
     case 'fireworks':
-      return createGlobalStyle``;
+      return createGlobalStyle`
+      body {
+        font-color: white,
+        color: white
+      }
+      `;
     default:
       return createGlobalStyle``;
   }

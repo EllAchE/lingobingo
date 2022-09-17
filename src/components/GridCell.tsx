@@ -25,8 +25,11 @@ export default function GridCell({ position, children }: any) {
         backgroundColor: state.cellStates[position].isClicked
           ? '#3252a8'
           : undefined,
-        color: state.cellStates[position]?.isClicked ? 'white' : undefined,
-        borderColor: 'black',
+        color:
+          state.cellStates[position]?.isClicked || state.showBingoEffects
+            ? 'white'
+            : undefined,
+        borderColor: state.showBingoEffects ? 'white' : 'black',
       }} // light blue
       onClick={() => {
         const stateCopy = JSON.parse(JSON.stringify(state));

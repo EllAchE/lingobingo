@@ -1,6 +1,7 @@
 import { AppBar, Box, Grid, IconButton } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import BingoCount from './BingoCount';
 
 export function openTwitter() {
   window.open('https://twitter.com/myhandleisbest', '_blank');
@@ -21,6 +22,7 @@ export default function WaterMark() {
           <GitHubIcon />
         </IconButton>
       </Grid>
+      <BingoCount />
     </Box>
   );
 }
