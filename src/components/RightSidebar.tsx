@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material';
 import { CustomInput } from './CustomInput';
 import { useSelector } from 'react-redux';
 
-export default function RightSideBar({ setBingoCard }: { setBingoCard: any }) {
+export default function RightSideBar() {
   const state = useSelector((state: any) => state.card);
   return (
     <Box sx={{ position: 'fixed', top: '35%', right: 8, width: 300 }}>
@@ -13,7 +13,7 @@ export default function RightSideBar({ setBingoCard }: { setBingoCard: any }) {
           ? `Remaining to Bingo: ${state.fewestRemaining}`
           : 'BINGO!'}
       </Typography>
-      <CustomInput setBingoCard={setBingoCard} />
+      <CustomInput />
     </Box>
   );
 }

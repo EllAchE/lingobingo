@@ -9,7 +9,6 @@ import { stat } from 'fs/promises';
 export function BingoCard() {
   const state = useSelector((state: any) => state.card);
   const card = state.card;
-  console.log(state);
 
   return (
     <Grid container maxWidth={'900px'} minWidth={'600px'} margin="auto">

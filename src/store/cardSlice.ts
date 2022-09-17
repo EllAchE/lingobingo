@@ -36,6 +36,12 @@ export const cardSlice = createSlice({
     setCategory: (state, action) => {
       state.category = action.payload;
     },
+    resetCard: (state, action) => {
+      state.fewestRemaining = 5;
+      state.isBingo = false;
+      state.showBingoEffects = false;
+      state.cellStates = [...emptyCellStates];
+    },
   },
 });
 
@@ -47,6 +53,7 @@ export const {
   setState,
   setShowBingoEffects,
   setCategory,
+  resetCard,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;

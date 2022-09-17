@@ -32,15 +32,13 @@ export default function GridCell({ position, children }: any) {
         const stateCopy = JSON.parse(JSON.stringify(state));
         stateCopy.cellStates[position].isClicked =
           !stateCopy.cellStates[position].isClicked;
-        if (!stateCopy.isBingo) {
-          const bingoCount = checkBingo(stateCopy.cellStates);
-          if (bingoCount == 0) {
-            stateCopy.isBingo = true;
-            stateCopy.showBingoEffects = true;
-            setTimeout(() => dis(setShowBingoEffects(false)), 5000);
-          }
-          stateCopy.fewestRemaining = bingoCount;
+        const bingoCount = checkBingo(stateCopy.cellStates);
+        if (bingoCount == 0 && !stateCopy.isBingo) {
+          stateCopy.isBingo = true;
+          stateCopy.showBingoEffects = true;
+          setTimeout(() => dis(setShowBingoEffects(false)), 5000);
         }
+        stateCopy.fewestRemaining = bingoCount;
         dis(setState(stateCopy));
       }}
     >

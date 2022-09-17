@@ -5,7 +5,7 @@ import extractCategories from '../scripts/extractCategories';
 import { useDispatch } from 'react-redux';
 import { setCard } from '../store/cardSlice';
 
-export function CustomInput({ setBingoCard }: { setBingoCard: any }) {
+export function CustomInput() {
   const [userInput, setUserInput] = useState('');
   const dis = useDispatch();
   return (

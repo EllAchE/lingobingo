@@ -2,17 +2,12 @@
 import React from 'react';
 import { Box, Button, Grid } from '@mui/material';
 import { CategorySelect } from './CategorySelect';
-import { setCategory } from '../store/cardSlice';
+import { resetCard, setCard, setCategory } from '../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { presetCategories } from '../constants';
+import { createBingoCard } from '../scripts/createGrid';
 
-export function LeftSideBar({
-  resetCard,
-  setBingoCard,
-}: {
-  setBingoCard: any;
-  resetCard: any;
-}) {
+export function LeftSideBar() {
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
   return (
@@ -24,8 +19,12 @@ export function LeftSideBar({
             sx={{ marginTop: 2 }}
             onClick={() => {
               dis(setCategory(state.category));
-              //@ts-ignore
-              dis(setCard(presetCategories[state.category]));
+              dis(
+                setCard(
+                  //@ts-ignore
+                  createBingoCard(presetCategories[state.category]).bingoCard
+                )
+              );
             }}
             variant={'contained'}
           >
@@ -36,7 +35,7 @@ export function LeftSideBar({
           <Button
             sx={{ marginTop: 2 }}
             onClick={() => {
-              resetCard();
+              dis(resetCard(''));
             }}
             variant={'contained'}
           >
