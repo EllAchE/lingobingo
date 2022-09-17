@@ -28,13 +28,13 @@ function App() {
           Lingo Bingo - {state.category}
         </Typography>
       </Grid>
-      <Grid item xs={12} md={2}>
+      <Grid item xs={12}>
         {!state.showBingoEffects && <CategoryAndCustomInput />}
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12}>
         <BingoCard />
       </Grid>
-      <Grid item xs={12} md={2}>
+      <Grid item xs={12}>
         {!state.showBingoEffects && <RandomizeAndReset />}
       </Grid>
       <WaterMark />

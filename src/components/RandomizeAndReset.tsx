@@ -1,6 +1,6 @@
 // TODO: this should allow selection from some prechosen categories
 import React from 'react';
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { resetCard, setCard, setCategory } from '../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { presetCategories } from '../constants';
@@ -9,8 +9,6 @@ import { createBingoCard } from '../scripts/createGrid';
 export default function RandomizeAndReset() {
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
-
-  console.log(window.innerWidth);
 
   return (
     <Grid container direction="row" justifyContent="center" sx={{ zIndex: 1 }}>

@@ -14,7 +14,7 @@ export function CategorySelect() {
 
   return (
     <Autocomplete
-      sx={{ width: '80%' }}
+      sx={{ width: '80%', maxWidth: '300px' }}
       disablePortal
       value={state.category}
       options={options}

@@ -5,27 +5,25 @@ import { CategorySelect } from './CategorySelect';
 import { CustomInput } from './CustomInput';
 
 export function CategoryAndCustomInput() {
-  console.log(window.innerWidth);
-
   return (
-    <Grid container direction="row" justifyContent="center">
+    <Grid container direction="row" justifyContent="center" spacing={1}>
       <Grid
         container
         xs={6}
-        md={2}
-        justifyContent="center"
+        justifyContent="flex-end"
         justifyItems="center"
         alignItems="center"
+        sx={{ paddingRight: 1 }}
       >
         <CategorySelect />
       </Grid>
       <Grid
         container
         xs={6}
-        md={3}
-        justifyContent="center"
+        justifyContent="flex-start"
         justifyItems="center"
         alignItems="center"
+        sx={{ paddingLeft: 1 }}
       >
         <CustomInput />
       </Grid>

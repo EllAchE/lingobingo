@@ -19,8 +19,9 @@ export function CustomInput() {
         borderColor: state.showBingoEffects ? 'white' : 'black',
         color: state.showBingoEffects ? 'white' : 'black',
         width: '80%',
+        maxWidth: '300px',
       }}
-      label="Create your own card!"
+      label="Create your own!"
       onChange={(
         e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
       ) => {

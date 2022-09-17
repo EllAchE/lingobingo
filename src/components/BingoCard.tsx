@@ -8,7 +8,7 @@ export function BingoCard() {
   const card = state.card;
 
   return (
-    <Grid container maxWidth={'100px'} minWidth={'800px'} margin="auto">
+    <Grid container maxWidth={'120vh'} minWidth={'800px'} margin="auto">
       <GridRow row={card[0]} rowIndex={0}></GridRow>
       <GridRow row={card[1]} rowIndex={1}></GridRow>
       <GridRow row={card[2]} rowIndex={2}></GridRow>
