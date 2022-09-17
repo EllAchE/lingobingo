@@ -18,7 +18,7 @@ export default function GridCell({ position, children }: any) {
       alignItems={'center'}
       xs={2}
       border={1}
-      height={'105px'}
+      height={'100px'}
       textAlign={'center'}
       key={position}
       sx={{
