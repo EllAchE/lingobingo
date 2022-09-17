@@ -18,7 +18,6 @@ export default function WaterMark() {
         bottom: 0,
         width: '100%',
         position: 'fixed',
-        zIndex: -1,
       }}
     >
       <Grid>

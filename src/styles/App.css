@@ -1,4 +1,4 @@
-/* .App {
+.App {
   text-align: center;
 }
 
@@ -6,6 +6,12 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+/* html {
+  background-color: black;
+  color: white;
+  border-color: white;
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -35,4 +41,4 @@
   to {
     transform: rotate(360deg);
   }
-} */
+}

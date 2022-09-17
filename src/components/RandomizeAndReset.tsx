@@ -13,7 +13,7 @@ export default function RandomizeAndReset() {
   console.log(window.innerWidth);
 
   return (
-    <Grid container direction="row" justifyContent="center">
+    <Grid container direction="row" justifyContent="center" sx={{ zIndex: 1 }}>
       <Button
         onClick={() => {
           dis(setCategory(state.category));

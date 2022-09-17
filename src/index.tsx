@@ -5,8 +5,6 @@ import App from './App';
 import reportWebVitals from './misc/reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import WaterMark from './components/WaterMark';
-import StyleProvider from './styles/StyleProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,7 +13,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
-      <WaterMark />
     </Provider>
   </React.StrictMode>
 );
