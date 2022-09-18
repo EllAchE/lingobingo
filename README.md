@@ -1,4 +1,4 @@
-#Lingo Bingo
+# Lingo Bingo
 
 Find out who you know is the biggest tech bro, weeb, ABG or corporate stereotype 😁 and liven up meetings & lectures by tracking which catchphrases the speaker spits out! Use a preset or create your own bingo card; just type in 25 semicolon-separated phrases.
 
