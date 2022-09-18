@@ -68,10 +68,39 @@ const TechBro: Category = {
 };
 
 const FinanceBro: Category = {
-  squares: [],
+  squares: [
+    'Lives in NYC',
+    'Wants to be VC, PE or IB',
+    "Didn't beat the market",
+    'Tweets about their favorite stock',
+    'Sells covered calls',
+    'Churns credit cards',
+    'Loves to talk about credit cards',
+    'Main goal is to get rich',
+    'Trades cryptocurrency',
+    'Wears vest',
+    'Favorite movie The Wolf of Wall Street',
+    'Favorite Movie The Big Short',
+    'Works/wants to at Goldman Sachs',
+    'At least 2 coffees per day',
+    'Owns trench coat',
+    "Doesn't go above 86th",
+    'Stocks are main personality trait',
+    'Brown Dress shoes or loafers',
+    'LinkedIn is favorite website',
+    'Robinhood account',
+    'Apple Watch',
+    'Patagonia',
+    'Shops at J-Crew',
+    '"I prefer metal credit cards"',
+    'Tells you how much they make',
+    'Vaguely Republican',
+    'Skis/snowboards on the Epic Pass',
+  ],
   freeParking: 'FREE PARKING: Member of WSB',
 };
 
+// done
 const FratBro: Category = {
   squares: [
     'Owns Cowboy Boots',
@@ -98,14 +127,50 @@ const FratBro: Category = {
     'Airpods in during conversation',
     'Watches/Listens to alpha male influencers',
     'Owns dab pen',
-    'Most meals are takeout',
     'Only works out sleeveless',
+    'Follows barstool sports',
   ],
   freeParking: 'FREE PARKING: Shotgunned Beer',
 };
 
+// done
 const C3: Category = {
-  squares: [],
+  squares: [
+    'Someone wearing patagonia',
+    'Someone wearing allbirds',
+    'Airpods or case visible',
+    'RSUs mentioned',
+    'Earnings report',
+    'Vest and rest',
+    '1 billion in the bank',
+    'Circle back',
+    'Presentation of more than 40 slides',
+    'Catered Food',
+    'Software Engineer wearing shorts',
+    'Sales Person in suit',
+    'Apple watch',
+    'Mandarin spoken',
+    'Revenue Forecast',
+    'Any of Q1, Q2, Q3, Q4',
+    'Acronym with more than 4 letters',
+    'More than 3 acronyms in one sentence',
+    'Meeting runs over time',
+    'Meeting of over 30 people',
+    'Weekly Happy Hour',
+    'Team Morale Mentioned',
+    'Someone says "Forecast"',
+    'Stock Price mentioned',
+    'Level Best',
+    'PTO',
+    'Palantir',
+    'SDL mentioned',
+    'New v8 bug',
+    'UI Designer Mentioned',
+    '"Killer Sales Team"',
+    'Engineer caught taking extra snacks',
+    'Jenkins, Github or Jira is down',
+    'TS spotted in the bathroom',
+  ],
   freeParking: 'FREE PARKING: Shotgunned Beer',
 };
 
@@ -141,6 +206,7 @@ const ABG: Category = {
   freeParking: 'FREE PARKING: Likes to Rave',
 };
 
+// done
 const Weeb: Category = {
   squares: [
     'Says "Naruhodo"',
