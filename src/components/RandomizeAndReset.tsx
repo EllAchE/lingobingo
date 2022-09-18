@@ -23,7 +23,7 @@ export default function RandomizeAndReset() {
           );
         }}
         variant={'contained'}
-        sx={{ height: 40, marginRight: 4 }}
+        sx={{ height: 40, marginRight: 4, zIndex: 2 }}
       >
         Random
       </Button>
@@ -32,7 +32,7 @@ export default function RandomizeAndReset() {
           dis(resetCard(''));
         }}
         variant={'contained'}
-        sx={{ height: 40 }}
+        sx={{ height: 40, zIndex: 2 }}
       >
         Reset
       </Button>
