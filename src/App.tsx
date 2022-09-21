@@ -19,7 +19,7 @@ function App() {
         justifyItems="center"
       >
         <div
-          className={`m-auto py-2 text-4xl text-${
+          className={`m-auto py-2 md:py-4 text-3xl md:text-4xl text-${
             state.showBingoEffects ? 'white' : 'black'
           }`}
           // sx={{
