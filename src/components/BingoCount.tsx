@@ -7,7 +7,7 @@ export default function BingoCount() {
   const state = useSelector((state: any) => state.card);
   return (
     <Box
-      className="right-1 sm:right-32"
+      className="right-1 sm:right-16 md: right-32"
       sx={{ position: 'absolute', bottom: 4 }}
     >
       <div

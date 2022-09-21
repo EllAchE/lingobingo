@@ -45,7 +45,7 @@ export default function GridCell({ position, children }: any) {
         dis(setState(stateCopy));
       }}
     >
-      <div className="text-xs sm:text-xl">{children}</div>
+      <div className="text-xs sm:text-xl px-2">{children}</div>
     </Grid>
   );
 }
