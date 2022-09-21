@@ -197,7 +197,7 @@ const ABG: Category = {
     'SO also has tattoo',
     'Dab Pen',
     'Vapes',
-    'Says "Starbies"',
+    '"My Tolerance is high"',
     'Has made Kandi',
     'Air Force Ones',
     'Pigtails or braids',

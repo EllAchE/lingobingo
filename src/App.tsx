@@ -1,6 +1,5 @@
 import React from 'react';
-import './styles/App.css';
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import { CategoryAndCustomInput } from './components/CategoryAndCardReset';
 import { useSelector } from 'react-redux';
 import FireworksAndConfetti from './components/particles/FireworksAndConfetti';
@@ -13,20 +12,27 @@ function App() {
 
   return (
     <Grid direction="column" container spacing={1}>
-      <Grid>
-        <Typography
-          variant="h3"
-          sx={{
-            color: state.showBingoEffects ? 'white' : undefined,
-            paddingBottom: 1,
-            paddingTop: 1,
-            fontFamily: 'Helvetica',
-          }}
-          margin="auto"
-          align="center"
+      <Grid
+        sx={{ paddingBottom: 2 }}
+        container
+        justifyContent="center"
+        justifyItems="center"
+      >
+        <div
+          className={`m-auto py-2 text-4xl text-${
+            state.showBingoEffects ? 'white' : 'black'
+          }`}
+          // sx={{
+          //   color: state.showBingoEffects ? 'white' : undefined,
+          //   paddingBottom: 1,
+          //   paddingTop: 1,
+          //   fontFamily: 'Helvetica',
+          //   margin: "auto"
+          // align="center"
+          // }}
         >
           Lingo Bingo - {state.category}
-        </Typography>
+        </div>
       </Grid>
       <Grid item xs={12}>
         {!state.showBingoEffects && <CategoryAndCustomInput />}

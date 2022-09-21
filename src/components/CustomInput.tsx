@@ -13,7 +13,7 @@ export function CustomInput() {
   return (
     <TextField
       multiline
-      maxRows={5}
+      maxRows={4}
       size="small"
       sx={{
         borderColor: state.showBingoEffects ? 'white' : 'black',

@@ -5,10 +5,10 @@ import GridCell from './GridCell';
 export default function GridRow(props: any) {
   const { row, rowIndex } = props;
   return (
-    <Grid container justifyContent={'center'}>
+    <Grid sx={{ maxWidth: '1000px', paddingX: '40px' }} container>
       {row.map((cellText: string, cellIndex: number) => {
         return (
-          <GridCell key={cellIndex} position={5 * rowIndex + cellIndex} item>
+          <GridCell key={cellIndex} position={4 * rowIndex + cellIndex} item>
             {cellText}
           </GridCell>
         );

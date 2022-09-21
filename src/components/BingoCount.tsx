@@ -1,22 +1,24 @@
 // TODO: this should allow selection from some prechosen categories
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 export default function BingoCount() {
   const state = useSelector((state: any) => state.card);
   return (
-    <Box sx={{ position: 'absolute', right: 60, bottom: 4 }}>
-      <Typography
-        sx={{
-          fontSize: 24,
-          color: state.showBingoEffects ? 'white' : undefined,
-        }}
+    <Box
+      className="right-1 sm:right-32"
+      sx={{ position: 'absolute', bottom: 4 }}
+    >
+      <div
+        className={`${
+          state.showBingoEffects ? 'text-white' : 'text-black'
+        } md:text-xl`}
       >
         {state.fewestRemaining
           ? `Remaining to Bingo: ${state.fewestRemaining}`
           : 'BINGO!'}
-      </Typography>
+      </div>
     </Box>
   );
 }

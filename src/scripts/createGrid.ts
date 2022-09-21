@@ -12,14 +12,14 @@ export function createBingoCard(category: Category): {
 
   let wordsCopy = [...squares];
 
-  while (row < 5) {
+  while (row < 4) {
     let word: string[] = wordsCopy.splice(
       Math.floor(Math.random() * wordsCopy.length),
       1
     );
     bingoCard[row].push(word[0]);
     filename += word[0];
-    if (bingoCard[row].length >= 5) {
+    if (bingoCard[row].length >= 4) {
       row += 1;
     }
   }

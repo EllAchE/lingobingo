@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { Typography } from '@mui/material';
 import { setShowBingoEffects, setState } from '../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import checkBingo from '../scripts/checkBingo';
@@ -16,9 +15,10 @@ export default function GridCell({ position, children }: any) {
       justifyContent={'space-around'}
       justifyItems={'center'}
       alignItems={'center'}
-      xs={2}
+      xs={3}
       border={1}
-      height={'15vh'}
+      maxHeight={'15vw'}
+      minHeight={'18vh'}
       textAlign={'center'}
       key={position}
       sx={{
@@ -45,9 +45,7 @@ export default function GridCell({ position, children }: any) {
         dis(setState(stateCopy));
       }}
     >
-      <Typography sx={{ paddingX: 1 }} variant={'body1'}>
-        {children}
-      </Typography>
+      <div className="text-xs sm:text-xl">{children}</div>
     </Grid>
   );
 }

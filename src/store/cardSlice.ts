@@ -9,7 +9,7 @@ export const cardSlice = createSlice({
     cellStates: [...emptyCellStates],
     isBingo: false,
     showBingoEffects: false,
-    fewestRemaining: 5,
+    fewestRemaining: 4,
     category: 'Corporate',
     exisitingCategories: presetCategories,
   },
@@ -38,7 +38,7 @@ export const cardSlice = createSlice({
       state.category = action.payload;
     },
     resetCard: (state, action) => {
-      state.fewestRemaining = 5;
+      state.fewestRemaining = 4;
       state.isBingo = false;
       state.showBingoEffects = false;
       state.cellStates = [...emptyCellStates];

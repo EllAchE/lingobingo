@@ -12,17 +12,17 @@ export default function checkBingo(squares: any[]): boolean | number {
       return cellState.index;
     });
 
-  const diagTopLeftSet = new Set([0, 6, 12, 18, 24]);
-  const diagBotLeftSet = new Set([20, 16, 12, 8, 4]);
+  const diagTopLeftSet = new Set([0, 5, 10, 15]);
+  const diagBotLeftSet = new Set([15, 10, 5, 0]);
 
-  const rows = [5, 5, 5, 5, 5];
-  const cols = [5, 5, 5, 5, 5];
-  let diagTopLeft = 5;
-  let diagBotLeft = 5;
+  const rows = [4, 4, 4, 4, 4];
+  const cols = [4, 4, 4, 4, 4];
+  let diagTopLeft = 4;
+  let diagBotLeft = 4;
 
   for (const i of clickedArray) {
-    const mod = i % 5;
-    const div = Math.floor(i / 5);
+    const mod = i % 4;
+    const div = Math.floor(i / 4);
     cols[mod] -= 1;
     rows[div] -= 1;
 
