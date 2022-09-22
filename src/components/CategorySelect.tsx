@@ -28,7 +28,8 @@ export function CategorySelect() {
           dis(
             setCard(
               //@ts-ignore
-              createBingoCard(presetCategories[e.target.innerText]).bingoCard
+              createBingoCard(presetCategories[e.target.innerText], state.dims)
+                .bingoCard
             )
           );
         }

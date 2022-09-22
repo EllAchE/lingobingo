@@ -5,13 +5,14 @@ import { createBingoCard } from '../scripts/createGrid';
 export const cardSlice = createSlice({
   name: 'card',
   initialState: {
-    card: createBingoCard(presetCategories.Corporate).bingoCard,
+    card: createBingoCard(presetCategories.Corporate, 4).bingoCard,
     cellStates: [...emptyCellStates],
     isBingo: false,
     showBingoEffects: false,
     fewestRemaining: 4,
     category: 'Corporate',
-    exisitingCategories: presetCategories,
+    existingCategories: presetCategories, // For future support of persistence of cats locally
+    dims: 4,
   },
   reducers: {
     setState: (state, action) => {
@@ -38,10 +39,19 @@ export const cardSlice = createSlice({
       state.category = action.payload;
     },
     resetCard: (state, action) => {
-      state.fewestRemaining = 4;
+      console.log('from reset');
+      state.fewestRemaining = action.payload;
       state.isBingo = false;
       state.showBingoEffects = false;
       state.cellStates = [...emptyCellStates];
+      state.category = 'Corporate';
+      state.card = createBingoCard(
+        presetCategories.Corporate,
+        action.payload
+      ).bingoCard;
+    },
+    setDims: (state, action) => {
+      state.dims = action.payload;
     },
   },
 });
@@ -55,6 +65,7 @@ export const {
   setShowBingoEffects,
   setCategory,
   resetCard,
+  setDims,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;

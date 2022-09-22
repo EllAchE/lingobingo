@@ -38,10 +38,10 @@ export function CustomInput() {
                 }
                 const cats = extractCategories(userInput);
                 if (cats) {
-                  dis(setCard(createBingoCard(cats).bingoCard));
+                  dis(setCard(createBingoCard(cats, state.dims).bingoCard));
                 } else {
                   alert(
-                    'Invalid input, must be at least 25 semicolon-separated phrases'
+                    'Invalid input, must be at least 16 semicolon-separated phrases'
                   );
                 }
               }}

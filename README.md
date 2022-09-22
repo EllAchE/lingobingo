@@ -12,3 +12,9 @@ https://user-images.githubusercontent.com/26192612/190882091-17564a46-c2cb-48f7-
 
 https://user-images.githubusercontent.com/26192612/190882117-16f26101-6858-4ac8-93a7-c0e8a96f4d98.mov
 
+### Potential Future Features:
+
+- Support for 3x3 & 5x5 grids
+- Custom "Free Parking"
+- Page Params to preselect category
+- Live rooms & "multiplayer"
