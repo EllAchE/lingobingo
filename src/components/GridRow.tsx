@@ -14,7 +14,7 @@ export default function GridRow(props: any) {
       <Grid
         container
         className="px-2 sm:px-8"
-        sx={{ margin: 'auto', width: '700px' }}
+        sx={{ margin: 'auto', maxWidth: '1000px' }}
       >
         {sizedRow.map((cellText: string, cellIndex: number) => {
           return (

@@ -17,8 +17,7 @@ export default function GridCell({ position, children }: any) {
       alignItems={'center'}
       xs
       border={1}
-      maxHeight={'15vw'}
-      minHeight={'18vh'}
+      minHeight={'15vh'}
       textAlign={'center'}
       key={position}
       sx={{
