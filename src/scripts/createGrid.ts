@@ -7,8 +7,6 @@ export function createBingoCard(
   bingoCard: BingoCardType;
   filename: string;
 } {
-  console.dir('creating card');
-  console.dir(dims);
 
   let filename: string = '';
   let row: number = 0;

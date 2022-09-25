@@ -5,13 +5,9 @@ import { useSelector } from 'react-redux';
 
 export default function GridRow(props: any) {
   const { row, rowIndex } = props;
-  console.log('row');
-  console.log(row);
   const state = useSelector((state: any) => state.card);
 
   let sizedRow = row.slice(0, state.dims);
-  console.log('sizedrow');
-  console.log(sizedRow);
 
   return (
     <Grid item xs={12}>

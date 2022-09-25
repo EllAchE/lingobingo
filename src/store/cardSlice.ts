@@ -39,7 +39,6 @@ export const cardSlice = createSlice({
       state.category = action.payload;
     },
     resetCard: (state, action) => {
-      console.log('from reset');
       state.fewestRemaining = action.payload;
       state.isBingo = false;
       state.showBingoEffects = false;
