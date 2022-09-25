@@ -175,6 +175,12 @@ const C3: Category = {
 };
 
 // done
+const OrthoBro: Category = {
+  squares: ['ANCEF', 'Buff af', 'Says bro a lot', 'Owns airpods'],
+  freeParking: 'FREE PARKING: A',
+};
+
+// done
 const ABG: Category = {
   squares: [
     'Likes Boba',

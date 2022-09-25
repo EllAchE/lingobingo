@@ -7,6 +7,9 @@ export function BingoCard() {
   const state = useSelector((state: any) => state.card);
   const card = state.card;
 
+  console.log('card');
+  console.log(card);
+
   return (
     <Grid container justifyContent="center">
       <GridRow row={card[0]} rowIndex={0} />

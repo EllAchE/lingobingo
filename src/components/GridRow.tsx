@@ -10,6 +10,8 @@ export default function GridRow(props: any) {
   const state = useSelector((state: any) => state.card);
 
   let sizedRow = row.slice(0, state.dims);
+  console.log('sizedrow');
+  console.log(sizedRow);
 
   return (
     <Grid item xs={12}>

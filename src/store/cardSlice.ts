@@ -49,9 +49,18 @@ export const cardSlice = createSlice({
         presetCategories.Corporate,
         action.payload
       ).bingoCard;
+      state.dims = action.payload;
     },
     setDims: (state, action) => {
       state.dims = action.payload;
+    },
+    clearSelections: (state, action) => {
+      state.isBingo = false;
+      state.showBingoEffects = false;
+      state.cellStates = state.cellStates.map((st) => {
+        st.isClicked = false;
+        return st;
+      });
     },
   },
 });
@@ -66,6 +75,7 @@ export const {
   setCategory,
   resetCard,
   setDims,
+  clearSelections,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;

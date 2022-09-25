@@ -8,7 +8,13 @@ import {
   MenuItem,
   Select,
 } from '@mui/material';
-import { resetCard, setCard, setCategory, setDims } from '../store/cardSlice';
+import {
+  clearSelections,
+  resetCard,
+  setCard,
+  setCategory,
+  setDims,
+} from '../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { presetCategories } from '../constants';
 import { createBingoCard } from '../scripts/createGrid';
@@ -37,7 +43,7 @@ export default function RandomizeAndReset() {
       </Button>
       <Button
         onClick={() => {
-          dis(resetCard(state.dims));
+          dis(clearSelections(undefined));
         }}
         variant={'contained'}
         sx={{ height: 40, zIndex: 2 }}

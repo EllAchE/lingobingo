@@ -15,7 +15,7 @@ export default function GridCell({ position, children }: any) {
       justifyContent={'space-around'}
       justifyItems={'center'}
       alignItems={'center'}
-      xs={3}
+      xs
       border={1}
       maxHeight={'15vw'}
       minHeight={'18vh'}
