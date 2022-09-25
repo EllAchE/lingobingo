@@ -27,8 +27,8 @@ export default function checkBingo(
     dbls.push(temp * dimsPlus);
   }
 
-  const diagTopLeftSet = new Set([0, 5, 10, 15]);
-  const diagBotLeftSet = new Set([15, 10, 5, 0]);
+  const diagTopLeftSet = new Set(dtls);
+  const diagBotLeftSet = new Set(dbls);
 
   const rows = Array(dims).fill(dims);
   const cols = Array(dims).fill(dims);
