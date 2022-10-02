@@ -22,14 +22,6 @@ function App() {
           className={`m-auto py-2 md:py-4 text-3xl md:text-4xl text-${
             state.showBingoEffects ? 'white' : 'black'
           }`}
-          // sx={{
-          //   color: state.showBingoEffects ? 'white' : undefined,
-          //   paddingBottom: 1,
-          //   paddingTop: 1,
-          //   fontFamily: 'Helvetica',
-          //   margin: "auto"
-          // align="center"
-          // }}
         >
           Lingo Bingo - {state.category}
         </div>
@@ -37,9 +29,7 @@ function App() {
       <Grid item xs={12}>
         {!state.showBingoEffects && <CategoryAndCustomInput />}
       </Grid>
-      <Grid item xs={12}>
-        <BingoCard />
-      </Grid>
+      <BingoCard />
       <Grid item xs={12}>
         {!state.showBingoEffects && <RandomizeAndReset />}
       </Grid>

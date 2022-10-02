@@ -3,8 +3,9 @@ import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import { presetCategories } from '../constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCard, setCategory } from '../store/cardSlice';
+import { clearSelections, setCard, setCategory } from '../store/cardSlice';
 import { createBingoCard } from '../scripts/createGrid';
+import { clearScreenDown } from 'readline';
 
 export function CategorySelect() {
   const dis = useDispatch();
@@ -32,6 +33,7 @@ export function CategorySelect() {
                 .bingoCard
             )
           );
+          dis(clearSelections(undefined));
         }
       }}
     />

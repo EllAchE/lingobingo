@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { setShowBingoEffects, setState } from '../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +8,14 @@ export default function GridCell({ position, children }: any) {
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
 
+  const [height, setHeight] = useState('');
+  const [width, setWidth] = useState('');
+
+  useEffect(() => {
+    setHeight((window.innerHeight / (state.dims + 2.05)).toString());
+    setWidth(height);
+  });
+
   return (
     <Grid
       container
@@ -16,8 +24,9 @@ export default function GridCell({ position, children }: any) {
       justifyItems={'center'}
       alignItems={'center'}
       xs
+      width={width ? width.toString() + 'px' : undefined}
+      height={height ? height.toString() + 'px' : undefined}
       border={1}
-      minHeight={'15vh'}
       textAlign={'center'}
       key={position}
       sx={{
@@ -44,7 +53,9 @@ export default function GridCell({ position, children }: any) {
         dis(setState(stateCopy));
       }}
     >
-      <div className="text-xs sm:text-xl px-2">{children}</div>
+      <div className="text-xs sm:text-md md:text-xl px-2 break-words">
+        {children}
+      </div>
     </Grid>
   );
 }
