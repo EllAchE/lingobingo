@@ -51,7 +51,7 @@ export default function checkBingo(
 
   const overallMin = Math.min(...rows, ...cols, diagTopLeft, diagBotLeft);
 
-  if (overallMin == 0) {
+  if (overallMin === 0) {
     return 0;
   }
   return overallMin;

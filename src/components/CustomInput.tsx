@@ -1,4 +1,4 @@
-import { Box, IconButton, InputAdornment, TextField } from '@mui/material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { createBingoCard } from '../scripts/createGrid';
 import extractCategories from '../scripts/extractCategories';

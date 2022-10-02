@@ -1,7 +1,6 @@
 // TODO: this should allow selection from some prechosen categories
 import React from 'react';
 import {
-  Box,
   Button,
   FormControl,
   Grid,
