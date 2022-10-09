@@ -40,6 +40,7 @@ export default function RandomizeAndReset() {
                 .bingoCard
             )
           );
+          dis(clearSelections(undefined));
         }}
         variant={'contained'}
         sx={{ height: 40, zIndex: 2, marginRight: 2 }}

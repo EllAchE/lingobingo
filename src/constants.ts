@@ -31,7 +31,7 @@ const Corporate: Category = {
     'Level Best',
     'PTO',
   ],
-  freeParking: 'FREE TESLA PARKING',
+  freeParking: 'FREE PARKING: Excel on a Resume',
 };
 
 // done
@@ -90,14 +90,14 @@ const FinanceBro: Category = {
     'LinkedIn is favorite website',
     'Robinhood account',
     'Apple Watch',
+    'Member of WSB',
     'Patagonia',
     'Shops at J-Crew',
     '"I prefer metal credit cards"',
     'Tells you how much they make',
     'Vaguely Republican',
-    'Skis/snowboards on the Epic Pass',
   ],
-  freeParking: 'FREE PARKING: Member of WSB',
+  freeParking: 'FREE PARKING: Works in Finance',
 };
 
 // done
@@ -171,7 +171,7 @@ const C3: Category = {
     'Jenkins, Github or Jira is down',
     'TS spotted in the bathroom',
   ],
-  freeParking: 'FREE PARKING: Shotgunned Beer',
+  freeParking: 'FREE PARKING: Knows what TS means',
 };
 
 // done
