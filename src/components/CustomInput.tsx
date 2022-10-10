@@ -41,7 +41,7 @@ export function CustomInput() {
                   dis(setCard(createBingoCard(cats, state.dims).bingoCard));
                 } else {
                   alert(
-                    'Invalid input, must be at least 16 semicolon-separated phrases'
+                    'Invalid input, must be at least 2 semicolon-separated phrases'
                   );
                 }
               }}
