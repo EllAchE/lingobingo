@@ -137,7 +137,6 @@ const FratBro: Category = {
 const C3: Category = {
   squares: [
     'Someone wearing patagonia',
-    'Someone wearing allbirds',
     'Airpods or case visible',
     'RSUs mentioned',
     'Earnings report',

@@ -8,6 +8,7 @@ export const cardSlice = createSlice({
     card: createBingoCard(presetCategories.Corporate, 4).bingoCard,
     cellStates: [...emptyCellStates],
     isBingo: false,
+    isEditing: false,
     showBingoEffects: false,
     fewestRemaining: 4,
     category: 'Corporate',
@@ -53,6 +54,9 @@ export const cardSlice = createSlice({
     setDims: (state, action) => {
       state.dims = action.payload;
     },
+    toggleIsEditing: (state, action) => {
+      state.isEditing = !state.isEditing;
+    },
     clearSelections: (state, action) => {
       state.isBingo = false;
       state.showBingoEffects = false;
@@ -60,6 +64,12 @@ export const cardSlice = createSlice({
         st.isClicked = false;
         return st;
       });
+    },
+    addCategory: (state, action) => {
+      const temp = { ...state.existingCategories };
+      //@ts-ignore
+      temp[action.payload.categoryName] = action.payload.category;
+      state.existingCategories = temp;
     },
   },
 });
@@ -74,7 +84,9 @@ export const {
   setCategory,
   resetCard,
   setDims,
+  toggleIsEditing,
   clearSelections,
+  addCategory,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;

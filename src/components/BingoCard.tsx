@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCard, setCategory } from '../store/cardSlice';
 import { createBingoCard } from '../scripts/createGrid';
 import { presetCategories } from '../constants';
-import { cp } from 'fs';
 
 export function BingoCard() {
   const state = useSelector((state: any) => state.card);
@@ -14,12 +13,6 @@ export function BingoCard() {
 
   const { category } = useParams();
   const dis = useDispatch();
-
-  console.dir(category);
-  console.dir(category);
-  console.dir(category);
-  console.dir(category);
-  console.dir(category);
 
   useEffect(() => {
     if (category) {

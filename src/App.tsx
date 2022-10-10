@@ -6,6 +6,7 @@ import FireworksAndConfetti from './components/particles/FireworksAndConfetti';
 import { BingoCard } from './components/BingoCard';
 import RandomizeAndReset from './components/RandomizeAndReset';
 import WaterMark from './components/WaterMark';
+import { CreateYourOwnCard } from './components/CreateYourOwnCard';
 
 function App() {
   const state = useSelector((state: any) => state.card);
@@ -29,7 +30,7 @@ function App() {
       <Grid item xs={12}>
         {!state.showBingoEffects && <CategoryAndCustomInput />}
       </Grid>
-      <BingoCard />
+      {state.isEditing ? <CreateYourOwnCard /> : <BingoCard />}
       <Grid item xs={12}>
         {!state.showBingoEffects && <RandomizeAndReset />}
       </Grid>

@@ -19,13 +19,21 @@ const CoreApp = () => (
   </React.StrictMode>
 );
 
+const EditSession = () => (
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
+
 const RoutedApp = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<CoreApp />} />
         <Route path="category/:category" element={<CoreApp />} />
-        <Route path="category" element={<CoreApp />} />
+        <Route path="create-your-own" element={<EditSession />} />
       </Routes>
     </Router>
   );
