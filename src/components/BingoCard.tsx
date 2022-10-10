@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import GridRow from './GridRow';
-import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCard, setCategory } from '../store/cardSlice';
+import { createBingoCard } from '../scripts/createGrid';
+import { presetCategories } from '../constants';
+import { cp } from 'fs';
 
 export function BingoCard() {
   const state = useSelector((state: any) => state.card);
   const card = state.card;
+
+  const { category } = useParams();
+  const dis = useDispatch();
+
+  console.dir(category);
+  console.dir(category);
+  console.dir(category);
+  console.dir(category);
+  console.dir(category);
+
+  useEffect(() => {
+    if (category) {
+      dis(setCategory(category));
+      dis(
+        setCard(
+          //@ts-ignore
+          createBingoCard(presetCategories[category], state.dims).bingoCard
+        )
+      );
+    }
+  }, []);
 
   return (
     <Grid sx={{ paddingY: 2 }} container justifyContent="center">

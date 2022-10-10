@@ -9,7 +9,7 @@ const Corporate: Category = {
     'RSUs mentioned',
     'Earnings report',
     'Vest and rest',
-    '1 billion in the bank',
+    '"Boss\'s Boss"',
     'Circle back',
     'Presentation of more than 40 slides',
     'Catered Food',
@@ -28,7 +28,7 @@ const Corporate: Category = {
     'Team Morale Mentioned',
     'Someone says "Forecast"',
     'Stock Price mentioned',
-    'Level Best',
+    'Action Items',
     'PTO',
   ],
   freeParking: 'FREE PARKING: Excel on a Resume',
@@ -251,7 +251,7 @@ export const presetCategories = {
   'Finance Bro': FinanceBro,
   'Frat Bro': FratBro,
   ABG,
-  'C3.ai': C3,
+  C3,
 };
 
 export const emptyCellStates = [
