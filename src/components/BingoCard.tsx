@@ -3,7 +3,12 @@ import Grid from '@mui/material/Grid';
 import GridRow from './GridRow';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCategory, setCard, setCategory } from '../store/cardSlice';
+import {
+  addCategory,
+  clearSelections,
+  setCard,
+  setCategory,
+} from '../store/cardSlice';
 import { createBingoCard } from '../scripts/createGrid';
 import { presetCategories } from '../constants';
 
@@ -21,11 +26,10 @@ export function BingoCard() {
         dis(
           setCard(
             //@ts-ignore
-            createBingoCard(presetCategories[category], state.dims).bingoCard
+            createBingoCard(presetCategories[category], state.dims)
           )
         );
-      }
-      if (customName && customSquares) {
+      } else if (customName && customSquares) {
         const squares = customSquares.split(';');
 
         dis(
@@ -40,12 +44,27 @@ export function BingoCard() {
             createBingoCard(
               { squares, freeParking: 'Free Parking' },
               state.dims
-            ).bingoCard
+            )
           )
         );
+      } else {
+        const catName = Object.keys(presetCategories)[0];
+        dis(setCategory(catName));
+        dis(
+          setCard(
+            //@ts-ignore
+            createBingoCard(presetCategories[catName], state.dims)
+          )
+        );
+        dis(clearSelections(undefined));
       }
     }
   }, []);
+
+  console.dir(card);
+  console.dir(card[0]);
+  console.dir('OUTSIDE');
+  console.dir(card.length);
 
   return (
     <Grid sx={{ paddingY: 2 }} container justifyContent="center">

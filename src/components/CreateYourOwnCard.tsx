@@ -70,13 +70,9 @@ export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
               dis(clearSelections(undefined));
               dis(addCategory({ categoryName: categoryTitle, category: cat }));
               dis(setCategory(categoryTitle));
-              console.log('cat is set');
               dis(toggleIsEditing(undefined));
-              console.log('tog is ed');
-              dis(setCard(createBingoCard(cat, editDims).bingoCard));
-              console.log('card set');
+              dis(setCard(createBingoCard(cat, editDims)));
               successSnack();
-              console.log('ss sncak');
             }
           }}
         >

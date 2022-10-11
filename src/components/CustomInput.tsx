@@ -38,7 +38,7 @@ export function CustomInput() {
                 }
                 const cats = extractCategories(userInput);
                 if (cats) {
-                  dis(setCard(createBingoCard(cats, state.dims).bingoCard));
+                  dis(setCard(createBingoCard(cats, state.dims)));
                 } else {
                   alert(
                     'Invalid input, must be at least 2 semicolon-separated phrases'

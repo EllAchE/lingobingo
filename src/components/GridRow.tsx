@@ -7,6 +7,8 @@ export default function GridRow(props: any) {
   const { row, rowIndex } = props;
   const state = useSelector((state: any) => state.card);
 
+  console.dir(row);
+  console.dir(state.dims);
   let sizedRow = row.slice(0, state.dims);
 
   return (

@@ -39,7 +39,6 @@ export default function RandomizeAndReset() {
             setCard(
               //@ts-ignore
               createBingoCard(presetCategories[state.category], state.dims)
-                .bingoCard
             )
           );
           dis(clearSelections(undefined));

@@ -3,11 +3,7 @@ import { BingoCardType, Category } from '../types';
 export function createBingoCard(
   category: Category,
   dims: number
-): {
-  bingoCard: BingoCardType;
-  filename: string;
-} {
-  let filename: string = '';
+): BingoCardType {
   let row: number = 0;
   let bingoCard: any = [];
 
@@ -27,7 +23,6 @@ export function createBingoCard(
       1
     );
     bingoCard[row].push(word[0]);
-    filename += word[0];
     if (bingoCard[row].length >= dims) {
       row += 1;
     }
@@ -37,6 +32,5 @@ export function createBingoCard(
     bingoCard[Math.floor(dims / 2)][Math.floor(dims / 2)] = freeParking;
   }
 
-  filename += '.csv';
-  return { bingoCard, filename };
+  return bingoCard;
 }

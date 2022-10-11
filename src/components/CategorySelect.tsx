@@ -30,7 +30,7 @@ export function CategorySelect() {
               createBingoCard(
                 state.existingCategories[e.target.innerText],
                 state.dims
-              ).bingoCard
+              )
             )
           );
           dis(clearSelections(undefined));

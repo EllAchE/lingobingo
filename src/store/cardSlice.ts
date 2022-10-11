@@ -5,7 +5,7 @@ import { createBingoCard } from '../scripts/createGrid';
 export const cardSlice = createSlice({
   name: 'card',
   initialState: {
-    card: createBingoCard(presetCategories.Corporate, 4).bingoCard,
+    card: createBingoCard(presetCategories.Corporate, 4),
     cellStates: [...emptyCellStates],
     isBingo: false,
     isEditing: false,
@@ -48,7 +48,7 @@ export const cardSlice = createSlice({
         //@ts-ignore
         state.existingCategories[state.category],
         action.payload
-      ).bingoCard;
+      );
       state.dims = action.payload;
     },
     setDims: (state, action) => {

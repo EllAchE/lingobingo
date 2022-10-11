@@ -1,4 +1,12 @@
-import { Alert, Box, Grid, IconButton, Snackbar } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Snackbar,
+  stepperClasses,
+} from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import BingoCount from './BingoCount';
@@ -41,11 +49,11 @@ export default function WaterMark() {
   const state = useSelector((state: any) => state.card);
 
   function shareLink() {
-    let urlChunks = window.location.href.split('/');
-    let url = urlChunks[0] + '/' + urlChunks[1] + '/' + urlChunks[2];
+    // let urlChunks = window.location.href.split('/');
+    let url = 'lingobingo.app';
     if (state.category in presetCategories) {
       url += `/category/${state.category}`;
-    } else {
+    } else if (state.category) {
       url += `/category/${state.category}/`;
       for (const cell of state.existingCategories[state.category].squares) {
         url += ';' + cell;
@@ -80,6 +88,14 @@ export default function WaterMark() {
         >
           <ShareIcon sx={{ fontSize: 40 }} />
         </IconButton>
+        <Button
+          onClick={() => {
+            shareLink();
+            handleClick();
+          }}
+        >
+          Share
+        </Button>
       </Grid>
       <Snackbar open={open} autoHideDuration={2200} onClose={handleClose}>
         <Alert
