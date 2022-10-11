@@ -7,7 +7,6 @@ export function createBingoCard(
   bingoCard: BingoCardType;
   filename: string;
 } {
-
   let filename: string = '';
   let row: number = 0;
   let bingoCard: any = [];

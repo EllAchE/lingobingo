@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import GridRow from './GridRow';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCard, setCategory } from '../store/cardSlice';
+import { addCategory, setCard, setCategory } from '../store/cardSlice';
 import { createBingoCard } from '../scripts/createGrid';
 import { presetCategories } from '../constants';
 
@@ -11,7 +11,7 @@ export function BingoCard() {
   const state = useSelector((state: any) => state.card);
   const card = state.card;
 
-  const { category } = useParams();
+  const { category, customName, customSquares } = useParams();
   const dis = useDispatch();
 
   useEffect(() => {
@@ -21,6 +21,23 @@ export function BingoCard() {
         setCard(
           //@ts-ignore
           createBingoCard(presetCategories[category], state.dims).bingoCard
+        )
+      );
+    }
+    if (customName && customSquares) {
+      const squares = customSquares.split(';');
+
+      dis(
+        addCategory({
+          categoryName: customName,
+          category: { squares, freeParking: 'Free Parking' },
+        })
+      );
+      dis(
+        setCard(
+          //@ts-ignore
+          createBingoCard(state.existingCategories[customName], state.dims)
+            .bingoCard
         )
       );
     }

@@ -1,15 +1,13 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import { useSelector } from 'react-redux';
 import EditableGridCell from './EditableGridCell';
 
 export default function EditableGridRow(props: any) {
-  const { rowIndex } = props;
-  const state = useSelector((state: any) => state.card);
+  const { rowLen, rowIndex } = props;
 
   const arr = [];
   let i = 0;
-  while (i < state.dims) {
+  while (i < rowLen) {
     arr.push(i);
     i += 1;
   }
@@ -24,8 +22,9 @@ export default function EditableGridRow(props: any) {
         {arr.map((cellIndex: number) => {
           return (
             <EditableGridCell
+              rowLen={rowLen}
               key={cellIndex}
-              position={state.dims * rowIndex + cellIndex}
+              position={rowLen * rowIndex + cellIndex}
               item
             />
           );

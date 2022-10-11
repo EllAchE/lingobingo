@@ -33,6 +33,10 @@ const RoutedApp = () => {
       <Routes>
         <Route path="/" element={<CoreApp />} />
         <Route path="category/:category" element={<CoreApp />} />
+        <Route
+          path="category/:customName/:customSquares"
+          element={<CoreApp />}
+        />
         <Route path="create-your-own" element={<EditSession />} />
       </Routes>
     </Router>

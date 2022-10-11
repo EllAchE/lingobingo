@@ -24,15 +24,15 @@ function App() {
             state.showBingoEffects ? 'white' : 'black'
           }`}
         >
-          Lingo Bingo - {state.category}
+          {state.isEditing
+            ? 'Create New Lingo Bingo!'
+            : `Lingo Bingo - ${state.category}`}
         </div>
       </Grid>
-      <Grid item xs={12}>
-        {!state.showBingoEffects && <CategoryAndCustomInput />}
-      </Grid>
+      {!state.showBingoEffects && <CategoryAndCustomInput />}
       {state.isEditing ? <CreateYourOwnCard /> : <BingoCard />}
       <Grid item xs={12}>
-        {!state.showBingoEffects && <RandomizeAndReset />}
+        {!state.showBingoEffects && !state.isEditing && <RandomizeAndReset />}
       </Grid>
       <WaterMark />
       {state.showBingoEffects && <FireworksAndConfetti />}

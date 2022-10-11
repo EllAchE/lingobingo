@@ -44,15 +44,18 @@ export const cardSlice = createSlice({
       state.isBingo = false;
       state.showBingoEffects = false;
       state.cellStates = [...emptyCellStates];
-      state.category = 'Corporate';
       state.card = createBingoCard(
-        presetCategories.Corporate,
+        //@ts-ignore
+        state.existingCategories[state.category],
         action.payload
       ).bingoCard;
       state.dims = action.payload;
     },
     setDims: (state, action) => {
       state.dims = action.payload;
+    },
+    setFewestRemaining: (state, action) => {
+      state.fewestRemaining = action.payload;
     },
     toggleIsEditing: (state, action) => {
       state.isEditing = !state.isEditing;
@@ -84,6 +87,7 @@ export const {
   setCategory,
   resetCard,
   setDims,
+  setFewestRemaining,
   toggleIsEditing,
   clearSelections,
   addCategory,

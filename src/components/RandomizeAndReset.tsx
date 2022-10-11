@@ -22,6 +22,8 @@ export default function RandomizeAndReset() {
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
 
+  const [dims, setDims] = React.useState(state.dims);
+
   return (
     <Grid
       container
@@ -56,15 +58,16 @@ export default function RandomizeAndReset() {
       >
         Reset
       </Button>
-      <FormControl sx={{ m: 1, minWidth: 140, zIndex: 2 }} size="small">
+      <FormControl sx={{ m: 1, minWidth: 140 }} size="small">
         <InputLabel id="demo-select-small">Set Dimensions</InputLabel>
         <Select
           labelId="demo-select-small"
           id="demo-select-small"
-          value={0}
+          value={dims}
           label="Set Dimensions"
           onChange={(e) => {
             dis(resetCard(e.target.value));
+            setDims(e.target.value);
           }}
         >
           <MenuItem value={3}>3x3</MenuItem>
@@ -72,30 +75,6 @@ export default function RandomizeAndReset() {
           <MenuItem value={5}>5x5</MenuItem>
         </Select>
       </FormControl>
-      {/* <FormControl>
-        <InputLabel
-          id="ANID"
-          style={{
-            marginLeft: 10,
-            top: '50%',
-            transform: 'translate(0,-50%',
-          }}
-        >
-          Set Dimensions
-        </InputLabel>
-        <Select
-          labelId="ANID"
-          sx={{ width: 160, height: 40, zIndex: 2 }}
-          size="small"
-          onChange={(e) => {
-            dis(resetCard(e.target.value));
-          }}
-        >
-          <MenuItem value={3}>3x3</MenuItem>
-          <MenuItem value={4}>4x4</MenuItem>
-          <MenuItem value={5}>5x5</MenuItem>
-        </Select>
-      </FormControl> */}
     </Grid>
   );
 }

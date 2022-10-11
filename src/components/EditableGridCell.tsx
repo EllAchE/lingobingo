@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
-import { useDispatch, useSelector } from 'react-redux';
 
-export default function EditableGridCell({ position, children }: any) {
-  const dis = useDispatch();
-  const state = useSelector((state: any) => state.card);
-
+export default function EditableGridCell({ position, rowLen }: any) {
   const [height, setHeight] = useState('');
   const [width, setWidth] = useState('');
 
   useEffect(() => {
-    setHeight((window.innerHeight / (state.dims + 2.05)).toString());
+    setHeight((window.innerHeight / (rowLen + 2.05)).toString());
     setWidth(height);
   });
 

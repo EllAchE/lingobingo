@@ -1,45 +1,107 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { useDispatch, useSelector } from 'react-redux';
 import EditableGridRow from './EditableGridRow';
-import { Button } from '@mui/material';
-import { addCategory } from '../store/cardSlice';
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from '@mui/material';
+import {
+  addCategory,
+  clearSelections,
+  setCard,
+  setCategory,
+  toggleIsEditing,
+} from '../store/cardSlice';
+import { createBingoCard } from '../scripts/createGrid';
 
 export function CreateYourOwnCard() {
+  const state = useSelector((state: any) => state.card);
   const dis = useDispatch();
 
-  const state = useSelector((state: any) => state.card);
-  const card = state.card;
+  const [categoryTitle, setCategoryTitle] = useState<string>('');
+  const [editDims, setEditDims] = useState(state.dims);
 
   return (
     <>
       <Grid sx={{ paddingY: 2 }} container justifyContent="center">
-        <EditableGridRow row={card[0]} rowIndex={0} />
-        <EditableGridRow row={card[1]} rowIndex={1} />
-        <EditableGridRow row={card[2]} rowIndex={2} />
-        {card.length > 3 && <EditableGridRow row={card[3]} rowIndex={3} />}
-        {card.length > 4 && <EditableGridRow row={card[4]} rowIndex={4} />}
+        <EditableGridRow rowLen={editDims} rowIndex={0} />
+        <EditableGridRow rowLen={editDims} rowIndex={1} />
+        <EditableGridRow rowLen={editDims} rowIndex={2} />
+        {editDims > 3 && <EditableGridRow rowLen={editDims} rowIndex={3} />}
+        {editDims > 4 && <EditableGridRow rowLen={editDims} rowIndex={4} />}
       </Grid>
-      <Button
-        onClick={() => {
-          const cells = document.querySelectorAll('.editable-grid-cell');
-          let cardData: any[] = [];
-          cells.forEach((el: any) => {
-            cardData.push(el.innerText);
-          });
+      <Grid sx={{ paddingY: 2 }} container justifyContent="center">
+        <TextField
+          onChange={(e) => {
+            setCategoryTitle(e.target.value);
+          }}
+          label="Category Title"
+          size="small"
+        />
+        <Button
+          sx={{ marginLeft: 2 }}
+          variant="contained"
+          onClick={() => {
+            const cells = document.querySelectorAll('.editable-grid-cell');
+            let cardData: any[] = [];
+            cells.forEach((el: any) => {
+              cardData.push(el.innerText);
+            });
 
-          cardData = cardData.filter((t) => t);
+            cardData = cardData.filter((t) => t);
 
-          const cat = {
-            squares: cardData,
-            freeParking: 'Free Parking',
-          };
+            const cat = {
+              squares: cardData,
+              freeParking: 'Free Parking',
+            };
 
-          dis(addCategory({ categoryName: 'TEST', category: cat }));
-        }}
-      >
-        Create Card
-      </Button>
+            if (!categoryTitle) {
+              alert('You must have a title for your category');
+            } else if (cardData.length < 2) {
+              alert(
+                'You must have at least 2 bingo squares to create a category'
+              );
+            } else {
+              dis(addCategory({ categoryName: categoryTitle, category: cat }));
+              dis(setCategory(categoryTitle));
+              dis(toggleIsEditing(undefined));
+              dis(
+                setCard(
+                  //@ts-ignore
+                  createBingoCard(
+                    state.existingCategories[categoryTitle],
+                    editDims
+                  ).bingoCard
+                )
+              );
+              dis(clearSelections(undefined));
+            }
+          }}
+        >
+          Create Card
+        </Button>
+        <FormControl sx={{ m: 1, minWidth: 140 }} size="small">
+          <InputLabel id="demo-select-small">Set Dimensions</InputLabel>
+          <Select
+            labelId="demo-select-small"
+            id="demo-select-small"
+            value={editDims}
+            label="Set Dimensions"
+            onChange={(e) => {
+              setEditDims(e.target.value);
+            }}
+          >
+            <MenuItem value={3}>3x3</MenuItem>
+            <MenuItem value={4}>4x4</MenuItem>
+            <MenuItem value={5}>5x5</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
     </>
   );
 }
