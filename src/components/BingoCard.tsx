@@ -15,31 +15,35 @@ export function BingoCard() {
   const dis = useDispatch();
 
   useEffect(() => {
-    if (category) {
-      dis(setCategory(category));
-      dis(
-        setCard(
-          //@ts-ignore
-          createBingoCard(presetCategories[category], state.dims).bingoCard
-        )
-      );
-    }
-    if (customName && customSquares) {
-      const squares = customSquares.split(';');
+    if (!state.category) {
+      if (category) {
+        dis(setCategory(category));
+        dis(
+          setCard(
+            //@ts-ignore
+            createBingoCard(presetCategories[category], state.dims).bingoCard
+          )
+        );
+      }
+      if (customName && customSquares) {
+        const squares = customSquares.split(';');
 
-      dis(
-        addCategory({
-          categoryName: customName,
-          category: { squares, freeParking: 'Free Parking' },
-        })
-      );
-      dis(
-        setCard(
-          //@ts-ignore
-          createBingoCard(state.existingCategories[customName], state.dims)
-            .bingoCard
-        )
-      );
+        dis(
+          addCategory({
+            categoryName: customName,
+            category: { squares, freeParking: 'Free Parking' },
+          })
+        );
+        dis(setCategory(customName));
+        dis(
+          setCard(
+            createBingoCard(
+              { squares, freeParking: 'Free Parking' },
+              state.dims
+            ).bingoCard
+          )
+        );
+      }
     }
   }, []);
 

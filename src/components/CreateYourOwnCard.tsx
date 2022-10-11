@@ -19,7 +19,7 @@ import {
 } from '../store/cardSlice';
 import { createBingoCard } from '../scripts/createGrid';
 
-export function CreateYourOwnCard() {
+export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
   const state = useSelector((state: any) => state.card);
   const dis = useDispatch();
 
@@ -35,7 +35,7 @@ export function CreateYourOwnCard() {
         {editDims > 3 && <EditableGridRow rowLen={editDims} rowIndex={3} />}
         {editDims > 4 && <EditableGridRow rowLen={editDims} rowIndex={4} />}
       </Grid>
-      <Grid sx={{ paddingY: 2 }} container justifyContent="center">
+      <Grid container justifyContent="center" alignItems={'center'}>
         <TextField
           onChange={(e) => {
             setCategoryTitle(e.target.value);
@@ -44,7 +44,7 @@ export function CreateYourOwnCard() {
           size="small"
         />
         <Button
-          sx={{ marginLeft: 2 }}
+          sx={{ marginLeft: 2, height: '40px' }}
           variant="contained"
           onClick={() => {
             const cells = document.querySelectorAll('.editable-grid-cell');
@@ -67,25 +67,22 @@ export function CreateYourOwnCard() {
                 'You must have at least 2 bingo squares to create a category'
               );
             } else {
+              dis(clearSelections(undefined));
               dis(addCategory({ categoryName: categoryTitle, category: cat }));
               dis(setCategory(categoryTitle));
+              console.log('cat is set');
               dis(toggleIsEditing(undefined));
-              dis(
-                setCard(
-                  //@ts-ignore
-                  createBingoCard(
-                    state.existingCategories[categoryTitle],
-                    editDims
-                  ).bingoCard
-                )
-              );
-              dis(clearSelections(undefined));
+              console.log('tog is ed');
+              dis(setCard(createBingoCard(cat, editDims).bingoCard));
+              console.log('card set');
+              successSnack();
+              console.log('ss sncak');
             }
           }}
         >
           Create Card
         </Button>
-        <FormControl sx={{ m: 1, minWidth: 140 }} size="small">
+        <FormControl sx={{ m: 1, minWidth: 140, zIndex: 1 }} size="small">
           <InputLabel id="demo-select-small">Set Dimensions</InputLabel>
           <Select
             labelId="demo-select-small"

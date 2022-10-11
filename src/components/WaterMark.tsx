@@ -1,8 +1,12 @@
-import { Box, Grid, IconButton } from '@mui/material';
+import { Alert, Box, Grid, IconButton, Snackbar } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import BingoCount from './BingoCount';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import ShareIcon from '@mui/icons-material/Share';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { presetCategories } from '../constants';
 
 function rickRoll() {
   window.open('https://www.youtube.com/watch?v=a3Z7zEc7AXQ', '_blank');
@@ -17,6 +21,39 @@ function openGithub() {
 }
 
 export default function WaterMark() {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const state = useSelector((state: any) => state.card);
+
+  function shareLink() {
+    let urlChunks = window.location.href.split('/');
+    let url = urlChunks[0] + '/' + urlChunks[1] + '/' + urlChunks[2];
+    if (state.category in presetCategories) {
+      url += `/category/${state.category}`;
+    } else {
+      url += `/category/${state.category}/`;
+      for (const cell of state.existingCategories[state.category].squares) {
+        url += ';' + cell;
+      }
+    }
+    navigator.clipboard.writeText(url);
+  }
+
   return (
     <Box
       sx={{
@@ -35,7 +72,24 @@ export default function WaterMark() {
         <IconButton onClick={rickRoll}>
           <InstagramIcon sx={{ fontSize: 40 }} />
         </IconButton>
+        <IconButton
+          onClick={() => {
+            shareLink();
+            handleClick();
+          }}
+        >
+          <ShareIcon sx={{ fontSize: 40 }} />
+        </IconButton>
       </Grid>
+      <Snackbar open={open} autoHideDuration={2200} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          sx={{ width: '100%', right: 10 }}
+        >
+          Copied URL to clipboard!
+        </Alert>
+      </Snackbar>
       <BingoCount />
     </Box>
   );

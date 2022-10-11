@@ -11,7 +11,7 @@ export const cardSlice = createSlice({
     isEditing: false,
     showBingoEffects: false,
     fewestRemaining: 4,
-    category: 'Corporate',
+    category: undefined,
     existingCategories: presetCategories, // For future support of persistence of cats locally
     dims: 4,
   },
