@@ -13,8 +13,12 @@ export default function GridRow(props: any) {
     <Grid item xs={12}>
       <Grid
         container
-        className="px-1 sm:px-8"
-        sx={{ margin: 'auto', maxWidth: '1000px' }}
+        sx={{
+          paddingLeft: '12px',
+          paddingRight: '4px',
+          margin: 'auto',
+          maxWidth: '1000px',
+        }}
         alignItems="center"
         justifyContent={'center'}
       >

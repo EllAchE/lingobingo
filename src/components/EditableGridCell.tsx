@@ -6,8 +6,14 @@ export default function EditableGridCell({ position, rowLen }: any) {
   const [width, setWidth] = useState('');
 
   useEffect(() => {
-    setHeight((window.innerHeight / (rowLen + 2.05)).toString());
-    setWidth(height);
+    const w = window.innerWidth - 16; // for margin
+    const h = window.innerHeight;
+    const boxDim = Math.min(w / rowLen, h / (rowLen + 2.05));
+    setHeight(boxDim.toString());
+    setWidth(boxDim.toString());
+
+    console.log('boxDim');
+    console.log(boxDim);
   });
 
   return (
@@ -23,9 +29,12 @@ export default function EditableGridCell({ position, rowLen }: any) {
       border={1}
       textAlign={'center'}
       key={position}
-      className="overflow-hidden editable-grid-cell"
+      className="overflow-hidden"
     >
-      <div className="w-full" contentEditable={true}></div>
+      <div
+        className={`grid-cell editable-grid-cell w-full text-xs sm:text-md md:text-xl px-1 word-wrap break-words max-w-${width}`}
+        contentEditable={true}
+      ></div>
     </Grid>
   );
 }

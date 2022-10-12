@@ -61,11 +61,6 @@ export function BingoCard() {
     }
   }, []);
 
-  console.dir(card);
-  console.dir(card[0]);
-  console.dir('OUTSIDE');
-  console.dir(card.length);
-
   return (
     <Grid sx={{ paddingY: 2 }} container justifyContent="center">
       <GridRow row={card[0]} rowIndex={0} />

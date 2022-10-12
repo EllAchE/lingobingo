@@ -12,11 +12,14 @@ export default function GridCell({ position, children }: any) {
   const [width, setWidth] = useState('');
 
   useEffect(() => {
-    const w = window.innerWidth;
+    const w = window.innerWidth - 16; // for margin
     const h = window.innerHeight;
     const boxDim = Math.min(w / state.dims, h / (state.dims + 2.05));
     setHeight(boxDim.toString());
     setWidth(boxDim.toString());
+
+    console.log('boxDim');
+    console.log(boxDim);
   });
 
   return (
@@ -56,7 +59,9 @@ export default function GridCell({ position, children }: any) {
         dis(setState(stateCopy));
       }}
     >
-      <div className="text-xs sm:text-md md:text-xl px-2 break-words">
+      <div
+        className={`grid-cell text-xs sm:text-md md:text-xl px-1 word-wrap break-words max-w-full`}
+      >
         {children}
       </div>
     </Grid>

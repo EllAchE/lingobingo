@@ -16,8 +16,12 @@ export default function EditableGridRow(props: any) {
     <Grid item xs={12}>
       <Grid
         container
-        className="px-2 sm:px-8"
-        sx={{ margin: 'auto', maxWidth: '1000px' }}
+        sx={{
+          paddingLeft: '12px',
+          paddingRight: '4px',
+          margin: 'auto',
+          maxWidth: '1000px',
+        }}
       >
         {arr.map((cellIndex: number) => {
           return (
