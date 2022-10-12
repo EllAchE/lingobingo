@@ -12,8 +12,11 @@ export default function GridCell({ position, children }: any) {
   const [width, setWidth] = useState('');
 
   useEffect(() => {
-    setHeight((window.innerHeight / (state.dims + 2.05)).toString());
-    setWidth(height);
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const boxDim = Math.min(w / state.dims, h / (state.dims + 2.05));
+    setHeight(boxDim.toString());
+    setWidth(boxDim.toString());
   });
 
   return (

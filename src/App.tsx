@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Grid, Snackbar } from '@mui/material';
+import { Alert, Box, Grid, Snackbar } from '@mui/material';
 import { CategoryAndCustomInput } from './components/CategoryAndCardReset';
 import { useSelector } from 'react-redux';
 import FireworksAndConfetti from './components/particles/FireworksAndConfetti';
@@ -58,6 +58,7 @@ function App() {
         {!state.showBingoEffects && !state.isEditing && <RandomizeAndReset />}
       </Grid>
       <WaterMark />
+      <Box sx={{ height: '200px' }} />
       {state.showBingoEffects && <FireworksAndConfetti />}
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
         <Alert

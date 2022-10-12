@@ -1,4 +1,3 @@
-// TODO: this should allow selection from some prechosen categories
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +14,7 @@ export function CategorySelect() {
     <Autocomplete
       sx={{ width: '80%', maxWidth: '300px' }}
       disablePortal
-      value={state.category}
+      value={state.category ?? 'Corporate'} // TODO: this is a hardcoded hack
       options={options}
       size="small"
       renderInput={(params) => (

@@ -106,7 +106,7 @@ export default function WaterMark() {
           Copied URL to clipboard!
         </Alert>
       </Snackbar>
-      <BingoCount />
+      {/* <BingoCount /> */}
     </Box>
   );
 }

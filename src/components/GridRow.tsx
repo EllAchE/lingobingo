@@ -7,16 +7,16 @@ export default function GridRow(props: any) {
   const { row, rowIndex } = props;
   const state = useSelector((state: any) => state.card);
 
-  console.dir(row);
-  console.dir(state.dims);
   let sizedRow = row.slice(0, state.dims);
 
   return (
     <Grid item xs={12}>
       <Grid
         container
-        className="px-2 sm:px-8"
+        className="px-1 sm:px-8"
         sx={{ margin: 'auto', maxWidth: '1000px' }}
+        alignItems="center"
+        justifyContent={'center'}
       >
         {sizedRow.map((cellText: string, cellIndex: number) => {
           return (
