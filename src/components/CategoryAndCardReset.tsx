@@ -13,8 +13,21 @@ export function CategoryAndCustomInput() {
 
   return (
     <Grid container direction="row" justifyContent="center" spacing={1}>
+      {!state.isEditing && (
+        <Grid
+          container
+          xs={6}
+          justifyContent="flex-end"
+          justifyItems="center"
+          alignItems="center"
+          sx={{ paddingRight: 1 }}
+        >
+          <CategorySelect />
+        </Grid>
+      )}
       <Grid
         container
+        xs={6}
         justifyContent={state.isEditing ? 'center' : 'flex-start'}
         justifyItems="center"
         alignItems="center"
@@ -28,18 +41,7 @@ export function CategoryAndCustomInput() {
             </Tooltip>
           </>
         )} */}
-        {!state.isEditing && (
-          <Grid
-            container
-            xs={6}
-            justifyContent="flex-end"
-            justifyItems="center"
-            alignItems="center"
-            sx={{ paddingRight: 1 }}
-          >
-            <CategorySelect />
-          </Grid>
-        )}
+
         <Button
           variant={'contained'}
           onClick={() => {
@@ -47,7 +49,7 @@ export function CategoryAndCustomInput() {
           }}
           sx={{ marginLeft: 2 }}
         >
-          {state.isEditing ? 'Cancel Creation' : 'Create Your Own!'}
+          {state.isEditing ? 'Cancel Creation' : 'Create Bingo!'}
         </Button>
         <Tooltip
           title={
