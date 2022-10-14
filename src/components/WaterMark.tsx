@@ -50,7 +50,7 @@ export default function WaterMark() {
 
   function shareLink() {
     // let urlChunks = window.location.href.split('/');
-    let url = 'lingobingo.app';
+    let url = 'https://lingobingo.app';
     if (state.category in presetCategories) {
       url += `/category/${state.category}`;
     } else if (state.category) {
