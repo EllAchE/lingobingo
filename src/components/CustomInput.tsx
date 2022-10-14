@@ -18,10 +18,9 @@ export function CustomInput() {
       sx={{
         borderColor: state.showBingoEffects ? 'white' : 'black',
         color: state.showBingoEffects ? 'white' : 'black',
-        width: '80%',
         maxWidth: '300px',
       }}
-      label="Create your own!"
+      label="Quick Create!"
       onChange={(
         e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
       ) => {

@@ -18,6 +18,7 @@ import {
   toggleIsEditing,
 } from '../store/cardSlice';
 import { createBingoCard } from '../scripts/createGrid';
+import { CustomInput } from './CustomInput';
 
 export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
   const state = useSelector((state: any) => state.card);
