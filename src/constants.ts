@@ -64,6 +64,37 @@ const TechBro: Category = {
     'Listens to Joe Rogan',
     'Works (or wants to) at FAANG',
   ],
+  freeParking: 'FREE PARKING: Works in Tech',
+};
+
+const SoftwareEngineer: Category = {
+  squares: [
+    'Writes more code than emails',
+    'LGTM',
+    '"What\'s the staging password?"',
+    'Waiting to vest their shares',
+    'Works from home',
+    '"What\'s the time complexity?',
+    'Part of team is in SF',
+    'Learned code from Indian Youtuber',
+    'Works (or wants to) at FAANG',
+    'Uses VSCode',
+    'Codes during meetings',
+    'Job feeds them most meals',
+    'Wore shorts to office',
+    'Traveled to a tech conference',
+    'Owns Airpods',
+    'Bought Dogecoin', // 16
+    'Works (or wants to) at FAANG',
+    '"Production is down"',
+    'Uses a mac',
+    'Classes were 90% male',
+    'Company-branded patagonia',
+    'Wears t-shirt to work',
+    'Glasses',
+    'Untrimmed facial hair',
+    'Has reddit account',
+  ],
   freeParking: 'FREE PARKING: Leetcode Account',
 };
 
@@ -243,14 +274,49 @@ const Weeb: Category = {
   freeParking: 'FREE PARKING: Watches anime',
 };
 
+const Basic: Category = {
+  squares: [
+    'Likes pumpkin spice',
+    'Owns Uggs',
+    '"Yaaasss Queen"',
+    'Likes Reality TV',
+    'Has iphone',
+    'Daily Insta story',
+    'Photos with snap filters',
+    'Sephora',
+    'Always on phone',
+    'Goes to yoga',
+    'Follows skincare routine',
+    'Tiktoks of animals',
+    'Ray Bans',
+    'Has bought a bath bomb',
+    'Likes Starbucks',
+    'Is/was in sorority', // 16
+    'Glitter phone case',
+    'Has a VSCO',
+    'Fjall raven backpack',
+    'Polaroid wall in room',
+    'white shoes',
+    'Jeggings',
+    'Did/wants to do a eurotrip',
+    'Shops at lululemon',
+    'Attracted to square chins',
+    'Works in HR, marketing or healthcare',
+    'Has a dog',
+  ],
+  freeParking: 'Is Extra',
+};
+
 export const presetCategories = {
   Corporate,
   'Tech Bro': TechBro,
+  'Software Engineer': SoftwareEngineer,
   Weeb,
   'Finance Bro': FinanceBro,
   'Frat Bro': FratBro,
   ABG,
   C3,
+  Basic,
 };
 
 export const emptyCellStates = [
