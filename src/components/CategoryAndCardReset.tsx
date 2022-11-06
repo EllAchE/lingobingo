@@ -27,7 +27,7 @@ export function CategoryAndCustomInput() {
       )}
       <Grid
         container
-        xs={6}
+        xs={state.isEditing ? 12 : 6}
         justifyContent={state.isEditing ? 'center' : 'flex-start'}
         justifyItems="center"
         alignItems="center"
