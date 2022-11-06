@@ -53,7 +53,7 @@ export default function GridCell({ position, children }: any) {
         if (bingoCount === 0 && !stateCopy.isBingo) {
           stateCopy.isBingo = true;
           stateCopy.showBingoEffects = true;
-          setTimeout(() => dis(setShowBingoEffects(false)), 5000);
+          setTimeout(() => dis(setShowBingoEffects(false)), 7000);
         }
         stateCopy.fewestRemaining = bingoCount;
         dis(setState(stateCopy));

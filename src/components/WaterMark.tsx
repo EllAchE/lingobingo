@@ -88,14 +88,16 @@ export default function WaterMark() {
         >
           <ShareIcon sx={{ fontSize: 40 }} />
         </IconButton>
-        <Button
-          onClick={() => {
-            shareLink();
-            handleClick();
-          }}
-        >
-          Share
-        </Button>
+        {!state.showBingoEffects && (
+          <Button
+            onClick={() => {
+              shareLink();
+              handleClick();
+            }}
+          >
+            Share
+          </Button>
+        )}
       </Grid>
       <Snackbar open={open} autoHideDuration={2200} onClose={handleClose}>
         <Alert
