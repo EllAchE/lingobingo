@@ -37,7 +37,7 @@ export default function GridCell({ position, children }: any) {
       key={position}
       sx={{
         backgroundColor: state.cellStates[position].isClicked
-          ? '#3252a8'
+          ? state.themeColor
           : undefined,
         color:
           state.cellStates[position]?.isClicked || state.showBingoEffects

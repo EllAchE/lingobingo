@@ -18,7 +18,6 @@ import {
   toggleIsEditing,
 } from '../store/cardSlice';
 import { createBingoCard } from '../scripts/createGrid';
-import { CustomInput } from './CustomInput';
 
 export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
   const state = useSelector((state: any) => state.card);
@@ -45,7 +44,11 @@ export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
           size="small"
         />
         <Button
-          sx={{ marginLeft: 2, height: '40px' }}
+          sx={{
+            marginLeft: 2,
+            height: '40px',
+            backgroundColor: state.themeColor,
+          }}
           variant="contained"
           onClick={() => {
             const cells = document.querySelectorAll('.editable-grid-cell');

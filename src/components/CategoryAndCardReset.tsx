@@ -47,7 +47,7 @@ export function CategoryAndCustomInput() {
           onClick={() => {
             dis(toggleIsEditing(undefined));
           }}
-          sx={{ marginLeft: 2 }}
+          sx={{ marginLeft: 2, backgroundColor: state.themeColor }}
         >
           {state.isEditing ? 'Cancel Creation' : 'Create Bingo!'}
         </Button>

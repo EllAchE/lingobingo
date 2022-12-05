@@ -9,6 +9,7 @@ export const cardSlice = createSlice({
     cellStates: [...emptyCellStates],
     isBingo: false,
     isEditing: false,
+    themeColor: '#db77d6',
     showBingoEffects: false,
     fewestRemaining: 4,
     category: undefined,
@@ -38,6 +39,7 @@ export const cardSlice = createSlice({
     },
     setCategory: (state, action) => {
       state.category = action.payload;
+      state.themeColor = action.payload?.themeColor ?? '#3252a8';
     },
     resetCard: (state, action) => {
       state.fewestRemaining = action.payload;

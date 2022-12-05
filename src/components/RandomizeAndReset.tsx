@@ -44,7 +44,12 @@ export default function RandomizeAndReset() {
           dis(clearSelections(undefined));
         }}
         variant={'contained'}
-        sx={{ height: 40, zIndex: 2, marginRight: 2 }}
+        sx={{
+          height: 40,
+          zIndex: 2,
+          marginRight: 2,
+          backgroundColor: state.themeColor,
+        }}
       >
         Random
       </Button>
@@ -53,7 +58,12 @@ export default function RandomizeAndReset() {
           dis(clearSelections(undefined));
         }}
         variant={'contained'}
-        sx={{ height: 40, zIndex: 2, marginRight: 2 }}
+        sx={{
+          height: 40,
+          zIndex: 2,
+          marginRight: 2,
+          backgroundColor: state.themeColor,
+        }}
       >
         Reset
       </Button>

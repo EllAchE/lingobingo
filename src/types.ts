@@ -1,5 +1,6 @@
 export interface Category {
   freeParking?: string;
+  themeColor?: string;
   squares: string[];
 }
 
