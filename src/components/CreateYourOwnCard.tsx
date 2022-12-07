@@ -61,7 +61,6 @@ export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
 
             const cat = {
               squares: cardData,
-              freeParking: 'Free Parking',
             };
 
             if (!categoryTitle) {
