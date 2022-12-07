@@ -17,9 +17,6 @@ export default function GridCell({ position, children }: any) {
     const boxDim = Math.min(w / state.dims, h / (state.dims + 2.05));
     setHeight(boxDim.toString());
     setWidth(boxDim.toString());
-
-    console.log('boxDim');
-    console.log(boxDim);
   });
 
   return (

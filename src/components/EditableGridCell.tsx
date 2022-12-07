@@ -11,9 +11,6 @@ export default function EditableGridCell({ position, rowLen }: any) {
     const boxDim = Math.min(w / rowLen, h / (rowLen + 2.05));
     setHeight(boxDim.toString());
     setWidth(boxDim.toString());
-
-    console.log('boxDim');
-    console.log(boxDim);
   });
 
   return (
