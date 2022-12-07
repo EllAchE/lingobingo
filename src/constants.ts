@@ -85,7 +85,7 @@ const SoftwareEngineer: Category = {
     'Traveled to a tech conference',
     'Owns Airpods',
     'Bought Dogecoin', // 16
-    'Works (or wants to) at FAANG',
+    'More than one la croix per day',
     '"Production is down"',
     'Uses a mac',
     'Classes were 90% male',
