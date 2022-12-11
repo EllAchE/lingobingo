@@ -78,14 +78,6 @@ export default function WaterMark() {
         <IconButton onClick={rickRoll}>
           <InstagramIcon sx={{ fontSize: 40 }} />
         </IconButton>
-        <IconButton
-          onClick={() => {
-            shareLink();
-            handleClick();
-          }}
-        >
-          <ShareIcon sx={{ fontSize: 40 }} />
-        </IconButton>
         {!state.showBingoEffects && (
           <Button
             onClick={() => {
