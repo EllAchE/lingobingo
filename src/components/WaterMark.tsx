@@ -25,7 +25,7 @@ function openTwitter() {
 }
 
 function openGithub() {
-  window.open('https://github.com/EllAchE/lingobingo', '_blank');
+  window.open('https://github.com/EllAchE', '_blank');
 }
 
 export default function WaterMark() {
