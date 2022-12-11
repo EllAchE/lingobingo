@@ -1,15 +1,6 @@
-import {
-  Alert,
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Snackbar,
-  stepperClasses,
-} from '@mui/material';
+import { Alert, Box, Button, Grid, IconButton, Snackbar } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import BingoCount from './BingoCount';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import ShareIcon from '@mui/icons-material/Share';
 import { useState } from 'react';
@@ -26,6 +17,13 @@ function openTwitter() {
 
 function openGithub() {
   window.open('https://github.com/EllAchE', '_blank');
+}
+
+function openGoogleForm() {
+  window.open(
+    'https://docs.google.com/forms/d/e/1FAIpQLSfgCPr1rr9807sKvCAaX9_AcRLuGm1rell1OM0EkOpeSvRI6Q/viewform?usp=sf_link',
+    '_blank'
+  );
 }
 
 export default function WaterMark() {
@@ -96,6 +94,15 @@ export default function WaterMark() {
             }}
           >
             Share
+          </Button>
+        )}
+        {!state.showBingoEffects && (
+          <Button
+            onClick={() => {
+              openGoogleForm();
+            }}
+          >
+            Suggest
           </Button>
         )}
       </Grid>
