@@ -131,6 +131,33 @@ const FinanceBro: Category = {
   freeParking: 'FREE PARKING: Works in Finance',
 };
 
+const OldFart: Category = {
+  squares: [
+    'Cheer for coyote',
+    'DECA class',
+    'wooden tennis racket',
+    'name these sister’s - Marsha, Jan, Cindy brothers',
+    'drink from garden hose',
+    'party line',
+    'rabbit ears',
+    'words to Gilligan’s island theme song',
+    'Prince Albert in a can',
+    'clean chalkboard erasers for teacher',
+    'punch cards',
+    'use folded paper map',
+    'drive in movie',
+    'moon landing live',
+    'car fins',
+    'slinky down stairs',
+    ' Betsy Wetsy',
+    ' Stretch Armstrong',
+    'Luby’s',
+    'banana seat',
+    'sea monkeys ',
+  ],
+  freeParking: 'FREE PARKING: Over 50',
+};
+
 // done
 const FratBro: Category = {
   squares: [
@@ -317,6 +344,7 @@ export const presetCategories = {
   ABG,
   C3,
   Basic,
+  'Old Fart': OldFart,
 };
 
 export const emptyCellStates = [

@@ -2,7 +2,6 @@ import { Alert, Box, Button, Grid, IconButton, Snackbar } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import ShareIcon from '@mui/icons-material/Share';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { presetCategories } from '../constants';
