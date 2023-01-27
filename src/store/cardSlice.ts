@@ -15,6 +15,7 @@ export const cardSlice = createSlice({
     category: undefined,
     existingCategories: presetCategories, // For future support of persistence of cats locally
     dims: 4,
+    selectedBeat: 0,
   },
   reducers: {
     setState: (state, action) => {
@@ -76,6 +77,9 @@ export const cardSlice = createSlice({
       temp[action.payload.categoryName] = action.payload.category;
       state.existingCategories = temp;
     },
+    setSelectedBeat: (state, action) => {
+      state.selectedBeat = action.payload;
+    },
   },
 });
 
@@ -93,6 +97,7 @@ export const {
   toggleIsEditing,
   clearSelections,
   addCategory,
+  setSelectedBeat,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;

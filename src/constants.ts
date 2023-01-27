@@ -374,3 +374,12 @@ export const emptyCellStates = [
   { isClicked: false },
   { isClicked: false },
 ];
+
+export const beatPaths = [
+  '/beats/beat1.mp3',
+  '/beats/beat2.mp3',
+  '/beats/beat3.mp3',
+  '/beats/beat4.mp3',
+  '/beats/beat5.mp3',
+  '/beats/beat6.mp3',
+];

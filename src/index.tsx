@@ -6,6 +6,7 @@ import reportWebVitals from './misc/reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RapApp from './RapApp';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -27,6 +28,14 @@ const EditSession = () => (
   </React.StrictMode>
 );
 
+const RappingPairs = () => (
+  <React.StrictMode>
+    <Provider store={store}>
+      <RapApp />
+    </Provider>
+  </React.StrictMode>
+);
+
 const RoutedApp = () => {
   return (
     <Router>
@@ -38,6 +47,7 @@ const RoutedApp = () => {
           element={<CoreApp />}
         />
         <Route path="create-your-own" element={<EditSession />} />
+        <Route path="rap" element={<RappingPairs />} />
       </Routes>
     </Router>
   );
