@@ -46,7 +46,6 @@ export default function WaterMark() {
   const state = useSelector((state: any) => state.card);
 
   function shareLink() {
-    console.log('SHARE LINK');
     // let urlChunks = window.location.href.split('/');
     let url = 'https://lingobingo.app';
     if (state.category in presetCategories) {
@@ -61,14 +60,11 @@ export default function WaterMark() {
       }
       for (let cell of cells) {
         cell = cell.replaceAll(/\s/g, '%20');
-        url += ';' + cell;
+        url += cell + ';';
       }
-      console.log('checking here');
-      console.log(state.existingCategories);
-      console.log(state.category);
       const fp = state.existingCategories[state.category].freeParking;
       if (fp) {
-        url += ';' + fp + ';' + '~FP~';
+        url += fp.replaceAll(/\s/g, '%20') + ';' + '~FP~';
       }
     }
     navigator.clipboard.writeText(url);

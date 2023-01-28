@@ -73,7 +73,6 @@ export const cardSlice = createSlice({
       });
     },
     addCategory: (state, action) => {
-      console.log(action.payload);
       const temp = { ...state.existingCategories };
       //@ts-ignore
       temp[action.payload.categoryName] = action.payload.category;

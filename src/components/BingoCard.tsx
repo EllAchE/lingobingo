@@ -32,7 +32,7 @@ export function BingoCard() {
       } else if (customName && customSquares) {
         const squares = customSquares.replaceAll('%20', '').split(';');
         let freeParking;
-        if (squares[-1] == '~FP~') {
+        if (squares.at(-1) == '~FP~') {
           squares.pop();
           freeParking = squares.pop();
         }
