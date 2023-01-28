@@ -13,6 +13,7 @@ export function createBingoCard(
     i -= 1;
   }
 
+  console.log(category);
   const { squares, freeParking } = category;
 
   let wordsCopy = [...squares];
@@ -29,8 +30,19 @@ export function createBingoCard(
   }
 
   if (freeParking) {
-    bingoCard[Math.floor(dims / 2)][Math.floor(dims / 2)] = freeParking;
+    let temp = String(bingoCard[Math.floor(dims / 2)][Math.floor(dims / 2)]);
+    console.log(temp);
+    bingoCard[Math.floor(dims / 2)][Math.floor(dims / 2)] =
+      freeParking.replaceAll('%20', ' ');
+
+    if (!bingoCard[dims - 1][dims - 1]) {
+      console.log('pushing p');
+      console.log(temp);
+      bingoCard[dims - 1][dims - 1] = temp;
+    }
   }
 
+  console.log('bingoCard');
+  console.log(bingoCard);
   return bingoCard;
 }

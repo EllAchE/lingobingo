@@ -15,9 +15,11 @@ import {
   clearSelections,
   setCard,
   setCategory,
+  setEditorFreeParking,
   toggleIsEditing,
 } from '../store/cardSlice';
 import { createBingoCard } from '../scripts/createGrid';
+import addFreeParkingText from '../scripts/utils';
 
 export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
   const state = useSelector((state: any) => state.card);
@@ -25,15 +27,44 @@ export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
 
   const [categoryTitle, setCategoryTitle] = useState<string>('');
   const [editDims, setEditDims] = useState(state.dims);
+  const [addingParking, setAddingParking] = useState<boolean>(false);
 
   return (
     <>
       <Grid sx={{ paddingY: 2 }} container justifyContent="center">
-        <EditableGridRow rowLen={editDims} rowIndex={0} />
-        <EditableGridRow rowLen={editDims} rowIndex={1} />
-        <EditableGridRow rowLen={editDims} rowIndex={2} />
-        {editDims > 3 && <EditableGridRow rowLen={editDims} rowIndex={3} />}
-        {editDims > 4 && <EditableGridRow rowLen={editDims} rowIndex={4} />}
+        <EditableGridRow
+          addingParking={addingParking}
+          setAddingParking={setAddingParking}
+          rowLen={editDims}
+          rowIndex={0}
+        />
+        <EditableGridRow
+          addingParking={addingParking}
+          setAddingParking={setAddingParking}
+          rowLen={editDims}
+          rowIndex={1}
+        />
+        <EditableGridRow
+          addingParking={addingParking}
+          setAddingParking={setAddingParking}
+          rowLen={editDims}
+          rowIndex={2}
+        />
+        {editDims > 3 && (
+          <EditableGridRow
+            addingParking={addingParking}
+            setAddingParking={setAddingParking}
+            rowLen={editDims}
+            rowIndex={3}
+          />
+        )}
+        {editDims > 4 && (
+          <EditableGridRow
+            setAddingParking={setAddingParking}
+            rowLen={editDims}
+            rowIndex={4}
+          />
+        )}
       </Grid>
       <Grid container justifyContent="center" alignItems={'center'}>
         <TextField
@@ -57,10 +88,17 @@ export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
               cardData.push(el.innerText);
             });
 
-            cardData = cardData.filter((t) => t);
+            cardData = cardData.filter((t) => {
+              return t != state.editorFreeParking[0];
+            });
+
+            const fp = state.editorFreeParking
+              ? addFreeParkingText(state.editorFreeParking[0])
+              : undefined;
 
             const cat = {
               squares: cardData,
+              freeParking: fp,
             };
 
             if (!categoryTitle) {
@@ -71,15 +109,29 @@ export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
               );
             } else {
               dis(clearSelections(undefined));
-              dis(addCategory({ categoryName: categoryTitle, category: cat }));
+              dis(
+                addCategory({
+                  categoryName: categoryTitle,
+                  category: cat,
+                })
+              );
               dis(setCategory(categoryTitle));
               dis(toggleIsEditing(undefined));
               dis(setCard(createBingoCard(cat, editDims)));
+              dis(setEditorFreeParking(undefined));
               successSnack();
             }
           }}
         >
           Create Card
+        </Button>
+        <Button
+          disabled={addingParking}
+          onClick={() => {
+            setAddingParking(true);
+          }}
+        >
+          Set Free Parking
         </Button>
         <FormControl sx={{ m: 1, minWidth: 140, zIndex: 1 }} size="small">
           <InputLabel id="demo-select-small">Set Dimensions</InputLabel>

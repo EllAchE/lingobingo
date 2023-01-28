@@ -46,14 +46,29 @@ export default function WaterMark() {
   const state = useSelector((state: any) => state.card);
 
   function shareLink() {
+    console.log('SHARE LINK');
     // let urlChunks = window.location.href.split('/');
     let url = 'https://lingobingo.app';
     if (state.category in presetCategories) {
       url += `/category/${state.category}`;
     } else if (state.category) {
       url += `/category/${state.category}/`;
-      for (const cell of state.existingCategories[state.category].squares) {
+      let cells = state.existingCategories[state.category].squares;
+      if (state.editorFreeParking) {
+        cells = cells.filter((cell: string) => {
+          return cell != state.editorFreeParking[0];
+        });
+      }
+      for (let cell of cells) {
+        cell = cell.replaceAll(/\s/g, '%20');
         url += ';' + cell;
+      }
+      console.log('checking here');
+      console.log(state.existingCategories);
+      console.log(state.category);
+      const fp = state.existingCategories[state.category].freeParking;
+      if (fp) {
+        url += ';' + fp + ';' + '~FP~';
       }
     }
     navigator.clipboard.writeText(url);

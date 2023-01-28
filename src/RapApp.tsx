@@ -16,7 +16,7 @@ function RapApp() {
       justifyContent={'center'}
       justifyItems={'center'}
     >
-      <MovingText wordOne="Urban" wordTwo="Bourbon" />
+      <MovingText/>
       <RapMenu rapping={rapping} setRapping={setRapping} />
     </Grid>
   );

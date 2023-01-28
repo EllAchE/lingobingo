@@ -3,15 +3,13 @@ import { Button, Divider, Grid } from '@mui/material';
 
 // const anime = require('animejs');
 import anime from 'animejs';
+import { selectRandom, selectTwoRandom } from '../../scripts/rapUtils';
+import { rappingPairs } from '../../rappingPairs';
 
-export default function MovingText({
-  wordOne,
-  wordTwo,
-}: {
-  wordOne: string;
-  wordTwo: string;
-}) {
+export default function MovingText() {
   let animationRef = useRef(null);
+
+  const [wordOne, wordTwo] = selectTwoRandom(selectRandom(rappingPairs));
 
   useEffect(() => {
     //@ts-ignore

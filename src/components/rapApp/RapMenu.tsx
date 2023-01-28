@@ -30,15 +30,12 @@ export default function RapMenu({
           sx={{ fontSize: '24px' }}
           variant="contained"
           onClick={() => {
-            console.dir(currentAudio);
-            // hit start
-            currentAudio.currentTime = 0;
             if (nextAudio) {
-              console.log('rapping nextAudio');
               setCurrentAudio(nextAudio);
               setNextAudio(undefined);
               nextAudio.play();
             } else {
+              currentAudio.currentTime = 0;
               currentAudio.play();
             }
             setRapping(!rapping);
@@ -52,7 +49,6 @@ export default function RapMenu({
           sx={{ fontSize: '24px' }}
           variant="contained"
           onClick={() => {
-            console.dir(currentAudio);
             // hit stop
             currentAudio.pause();
             nextAudio?.pause();

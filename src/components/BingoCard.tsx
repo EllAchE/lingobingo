@@ -30,23 +30,21 @@ export function BingoCard() {
           )
         );
       } else if (customName && customSquares) {
-        const squares = customSquares.split(';');
+        const squares = customSquares.replaceAll('%20', '').split(';');
+        let freeParking;
+        if (squares[-1] == '~FP~') {
+          squares.pop();
+          freeParking = squares.pop();
+        }
 
         dis(
           addCategory({
             categoryName: customName,
-            category: { squares, freeParking: 'Free Parking' },
+            category: { squares, freeParking },
           })
         );
         dis(setCategory(customName));
-        dis(
-          setCard(
-            createBingoCard(
-              { squares, freeParking: 'Free Parking' },
-              state.dims
-            )
-          )
-        );
+        dis(setCard(createBingoCard({ squares, freeParking }, state.dims)));
       } else {
         const catName = Object.keys(presetCategories)[0];
         dis(setCategory(catName));

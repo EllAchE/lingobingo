@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import EditableGridCell from './EditableGridCell';
 
 export default function EditableGridRow(props: any) {
-  const { rowLen, rowIndex } = props;
+  const { rowLen, rowIndex, setAddingParking, addingParking } = props;
 
   const arr = [];
   let i = 0;
@@ -26,6 +26,8 @@ export default function EditableGridRow(props: any) {
         {arr.map((cellIndex: number) => {
           return (
             <EditableGridCell
+              setAddingParking={setAddingParking}
+              addingParking={addingParking}
               rowLen={rowLen}
               key={cellIndex}
               position={rowLen * rowIndex + cellIndex}
