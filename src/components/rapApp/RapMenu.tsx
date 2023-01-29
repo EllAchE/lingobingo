@@ -15,24 +15,23 @@ export default function RapMenu({
   rapping: boolean;
   setRapping: any;
 }) {
-  // const [dataArray, setDataArray] = useState<Uint8Array | undefined>();
   const [beatIndex, setBeatIndex] = useState(0);
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
 
-  function timeoutWordChange() {
-    if (rapping) {
-      setTimeout(() => {
-        dis(changeWords(undefined));
-        timeoutWordChange();
-      }, 8000);
-    }
-  }
+  // function timeoutWordChange() {
+  //   if (rapping) {
+  //     setTimeout(() => {
+  //       dis(changeWords(undefined));
+  //       timeoutWordChange();
+  //     }, 8000);
+  //   }
+  // }
 
-  function beginNewRap() {
-    setRapping(true);
-    timeoutWordChange();
-  }
+  // function beginNewRap() {
+  //   setRapping(true);
+  //   timeoutWordChange();
+  // }
 
   const setupAudioContext = () => {
     const audioContext = new window.AudioContext();
@@ -47,7 +46,6 @@ export default function RapMenu({
 
   useEffect(() => {
     const { dataArray, analyser } = setupAudioContext();
-    // setDataArray(da);
     const uniforms = {
       u_time: {
         type: 'f',
@@ -100,12 +98,14 @@ export default function RapMenu({
       // note: call render function on every animation frame
       requestAnimationFrame(render);
     };
-
+    console.log('rend');
     render(0);
   }, []);
 
   function chooseBeat(index: number) {
     index = index % BEAT_PATHS.length;
+    const source: any = document.getElementById('myAudio');
+    source.src = BEAT_PATHS[index];
     setBeatIndex(index);
   }
 
@@ -116,13 +116,11 @@ export default function RapMenu({
         className="w-80"
         controls
         autoPlay
-        onPlay={() => beginNewRap()}
+        onPlay={() => setRapping(true)}
         onPause={() => {
           setRapping(false);
         }}
-      >
-        <source id="audioSource" src={BEAT_PATHS[beatIndex]}></source>
-      </audio>
+      ></audio>
       {!rapping && (
         <Grid container alignItems={'spaceAround'}>
           {BEAT_PATHS.map((val, index) => {

@@ -10,8 +10,8 @@ export default function MovingText() {
   let animationRef = useRef(null);
   const state = useSelector((state: any) => state.card);
 
-  const m = selectRandomRhymeSet(WORD_SET_RANGES);
-  const [wordOne, wordTwo] = selectTwoRandom(RHYME_SETS[m]);
+  // const m = selectRandomRhymeSet(WORD_SET_RANGES);
+  // const [wordOne, wordTwo] = selectTwoRandom(RHYME_SETS[m]);
 
   useEffect(() => {
     animationRef.current = anime.timeline({ loop: true, autoplay: false });
