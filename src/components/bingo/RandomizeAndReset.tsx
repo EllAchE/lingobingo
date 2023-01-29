@@ -13,10 +13,9 @@ import {
   resetCard,
   setCard,
   setCategory,
-} from '../store/cardSlice';
+} from '../../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { presetCategories } from '../constants';
-import { createBingoCard } from '../scripts/createGrid';
+import { createBingoCard } from '../../scripts/createGrid';
 
 export default function RandomizeAndReset() {
   const dis = useDispatch();
@@ -37,7 +36,6 @@ export default function RandomizeAndReset() {
           dis(setCategory(state.category));
           dis(
             setCard(
-              //@ts-ignore
               createBingoCard(
                 state.existingCategories[state.category],
                 state.dims

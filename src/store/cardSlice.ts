@@ -1,22 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { emptyCellStates, presetCategories } from '../constants';
+import { EMPTY_CELL_STATES, PRESET_CATEGORIES } from '../constants';
+import { RHYME_SETS, WORD_SET_RANGES } from '../rappingPairs';
 import { createBingoCard } from '../scripts/createGrid';
+import { selectRandomRhymeSet, selectTwoRandom } from '../scripts/rapUtils';
 
 export const cardSlice = createSlice({
   name: 'card',
   initialState: {
-    card: createBingoCard(presetCategories.Corporate, 4),
-    cellStates: [...emptyCellStates],
+    card: createBingoCard(PRESET_CATEGORIES.Corporate, 4),
+    cellStates: [...EMPTY_CELL_STATES],
     isBingo: false,
     isEditing: false,
     themeColor: '#db77d6',
     showBingoEffects: false,
     fewestRemaining: 4,
     category: undefined,
-    existingCategories: presetCategories, // For future support of persistence of cats locally
+    existingCategories: PRESET_CATEGORIES, // For future support of persistence of cats locally
     dims: 4,
     selectedBeat: 0,
     editorFreeParking: [undefined, undefined],
+    wordOne: 'Lingo',
+    wordTwo: 'Bingo',
   },
   reducers: {
     setState: (state, action) => {
@@ -47,9 +51,8 @@ export const cardSlice = createSlice({
       state.fewestRemaining = action.payload;
       state.isBingo = false;
       state.showBingoEffects = false;
-      state.cellStates = [...emptyCellStates];
+      state.cellStates = [...EMPTY_CELL_STATES];
       state.card = createBingoCard(
-        //@ts-ignore
         state.existingCategories[state.category],
         action.payload
       );
@@ -74,7 +77,6 @@ export const cardSlice = createSlice({
     },
     addCategory: (state, action) => {
       const temp = { ...state.existingCategories };
-      //@ts-ignore
       temp[action.payload.categoryName] = action.payload.category;
       state.existingCategories = temp;
     },
@@ -83,6 +85,12 @@ export const cardSlice = createSlice({
     },
     setSelectedBeat: (state, action) => {
       state.selectedBeat = action.payload;
+    },
+    changeWords: (state, action) => {
+      const m = selectRandomRhymeSet(WORD_SET_RANGES);
+      const [wordOne, wordTwo] = selectTwoRandom(RHYME_SETS[m]);
+      state.wordOne = wordOne;
+      state.wordTwo = wordTwo;
     },
   },
 });
@@ -103,6 +111,7 @@ export const {
   addCategory,
   setEditorFreeParking,
   setSelectedBeat,
+  changeWords,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;

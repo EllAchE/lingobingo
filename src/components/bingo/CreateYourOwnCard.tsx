@@ -17,9 +17,9 @@ import {
   setCategory,
   setEditorFreeParking,
   toggleIsEditing,
-} from '../store/cardSlice';
-import { createBingoCard } from '../scripts/createGrid';
-import addFreeParkingText from '../scripts/utils';
+} from '../../store/cardSlice';
+import { createBingoCard } from '../../scripts/createGrid';
+import addFreeParkingText from '../../scripts/utils';
 
 export function CreateYourOwnCard({ successSnack }: { successSnack: any }) {
   const state = useSelector((state: any) => state.card);

@@ -1,21 +1,21 @@
 import React, { useEffect, useRef } from 'react';
-import { Button, Divider, Grid } from '@mui/material';
+import { Divider, Grid } from '@mui/material';
 
-// const anime = require('animejs');
 import anime from 'animejs';
-import { selectRandom, selectTwoRandom } from '../../scripts/rapUtils';
-import { rappingPairs } from '../../rappingPairs';
+import { selectRandomRhymeSet, selectTwoRandom } from '../../scripts/rapUtils';
+import { RHYME_SETS, WORD_SET_RANGES } from '../../rappingPairs';
+import { useSelector } from 'react-redux';
 
 export default function MovingText() {
   let animationRef = useRef(null);
+  const state = useSelector((state: any) => state.card);
 
-  const [wordOne, wordTwo] = selectTwoRandom(selectRandom(rappingPairs));
+  const m = selectRandomRhymeSet(WORD_SET_RANGES);
+  const [wordOne, wordTwo] = selectTwoRandom(RHYME_SETS[m]);
 
   useEffect(() => {
-    //@ts-ignore
     animationRef.current = anime.timeline({ loop: true, autoplay: false });
 
-    //@ts-ignore
     animationRef.current.add({
       targets: '.movingwords',
       opacity: 0,
@@ -24,14 +24,12 @@ export default function MovingText() {
       easing: 'easeInExpo',
       delay: 1000,
     });
-    //@ts-ignore
     animationRef.current.add({
       targets: '.movingwords',
       opacity: [0.6, 1],
       scale: [0.2, 1],
       duration: 300,
     });
-    //@ts-ignore
     animationRef.current.add({
       targets: '.movingwords',
       duration: 200,
@@ -50,12 +48,11 @@ export default function MovingText() {
       >
         <div
           onClick={() => {
-            //@ts-ignore
             animationRef.current.play();
           }}
           className="movingwords"
         >
-          {wordOne}
+          {state.wordOne}
         </div>
       </Grid>
       <Divider
@@ -63,6 +60,7 @@ export default function MovingText() {
         component="div"
         role="presentation"
       />
+
       <Grid
         item
         xs={12}
@@ -70,7 +68,7 @@ export default function MovingText() {
         sx={{ margin: 'auto' }}
         className="text-6xl movingwords"
       >
-        {wordTwo}
+        {state.wordTwo}
       </Grid>
     </>
   );

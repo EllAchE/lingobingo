@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Alert, Box, Grid, Snackbar } from '@mui/material';
-import { CategoryAndCustomInput } from './components/CategoryAndCardReset';
+import { CategoryAndCustomInput } from './components/bingo/CategoryAndCardReset';
 import { useSelector } from 'react-redux';
 import FireworksAndConfetti from './components/particles/FireworksAndConfetti';
-import { BingoCard } from './components/BingoCard';
-import RandomizeAndReset from './components/RandomizeAndReset';
-import WaterMark from './components/WaterMark';
-import { CreateYourOwnCard } from './components/CreateYourOwnCard';
+import { BingoCard } from './components/bingo/BingoCard';
+import RandomizeAndReset from './components/bingo/RandomizeAndReset';
+import WaterMark from './components/bingo/WaterMark';
+import { CreateYourOwnCard } from './components/bingo/CreateYourOwnCard';
 
 function App() {
   const state = useSelector((state: any) => state.card);

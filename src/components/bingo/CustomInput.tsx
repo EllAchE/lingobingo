@@ -1,9 +1,9 @@
 import { IconButton, InputAdornment, TextField } from '@mui/material';
 import React, { useState } from 'react';
-import { createBingoCard } from '../scripts/createGrid';
-import extractCategories from '../scripts/extractCategories';
+import { createBingoCard } from '../../scripts/createGrid';
+import extractCategories from '../../scripts/extractCategories';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCard } from '../store/cardSlice';
+import { setCard } from '../../store/cardSlice';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export function CustomInput() {

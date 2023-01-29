@@ -5,9 +5,11 @@ import { setSelectedBeat } from '../../store/cardSlice';
 export default function BeatButton({
   index,
   chooseBeat,
+  rapping,
 }: {
   index: number;
   chooseBeat: any;
+  rapping: boolean;
 }) {
   const state = useSelector((state: any) => state.card);
   const dis = useDispatch();
@@ -15,7 +17,7 @@ export default function BeatButton({
   return (
     <Grid item xs={2} textAlign="center">
       <Button
-        disabled={state.selectedBeat == index}
+        disabled={rapping || state.selectedBeat == index}
         variant="contained"
         onClick={() => {
           chooseBeat(index);

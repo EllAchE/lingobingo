@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEditorFreeParking } from '../store/cardSlice';
+import { setEditorFreeParking } from '../../store/cardSlice';
 
 export default function EditableGridCell({
   position,
@@ -49,7 +49,6 @@ export default function EditableGridCell({
       onClick={() => {
         if (addingParking) {
           const cell = document.getElementById(position.toString());
-          //@ts-ignore
           dis(setEditorFreeParking([cell.innerText, position]));
           setAddingParking(false);
         }

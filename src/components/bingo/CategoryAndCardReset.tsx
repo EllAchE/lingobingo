@@ -1,11 +1,10 @@
 // TODO: this should allow selection from some prechosen categories
 import React from 'react';
-import { Button, Grid, IconButton, Tooltip } from '@mui/material';
+import { Button, Grid, Tooltip } from '@mui/material';
 import { CategorySelect } from './CategorySelect';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleIsEditing } from '../store/cardSlice';
+import { toggleIsEditing } from '../../store/cardSlice';
 import HelpIcon from '@mui/icons-material/Help';
-import { CustomInput } from './CustomInput';
 
 export function CategoryAndCustomInput() {
   const dis = useDispatch();

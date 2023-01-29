@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
-import { setShowBingoEffects, setState } from '../store/cardSlice';
+import { setShowBingoEffects, setState } from '../../store/cardSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import checkBingo from '../scripts/checkBingo';
+import checkBingo from '../../scripts/checkBingo';
 
 export default function GridCell({ position, children }: any) {
   const dis = useDispatch();

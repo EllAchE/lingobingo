@@ -4,7 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { presetCategories } from '../constants';
+import { PRESET_CATEGORIES } from '../../constants';
 
 function rickRoll() {
   window.open('https://www.youtube.com/watch?v=a3Z7zEc7AXQ', '_blank');
@@ -48,7 +48,7 @@ export default function WaterMark() {
   function shareLink() {
     // let urlChunks = window.location.href.split('/');
     let url = 'https://lingobingo.app';
-    if (state.category in presetCategories) {
+    if (state.category in PRESET_CATEGORIES) {
       url += `/category/${state.category}`;
     } else if (state.category) {
       url += `/category/${state.category}/`;

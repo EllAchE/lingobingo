@@ -334,7 +334,7 @@ const Basic: Category = {
   freeParking: 'Is Extra',
 };
 
-export const presetCategories = {
+export const PRESET_CATEGORIES = {
   Corporate,
   'Tech Bro': TechBro,
   'Software Engineer': SoftwareEngineer,
@@ -347,7 +347,7 @@ export const presetCategories = {
   'Old Fart': OldFart,
 };
 
-export const emptyCellStates = [
+export const EMPTY_CELL_STATES = [
   { isClicked: false },
   { isClicked: false },
   { isClicked: false },
@@ -375,7 +375,7 @@ export const emptyCellStates = [
   { isClicked: false },
 ];
 
-export const beatPaths = [
+export const BEAT_PATHS = [
   '/beats/beat1.mp3',
   '/beats/beat2.mp3',
   '/beats/beat3.mp3',

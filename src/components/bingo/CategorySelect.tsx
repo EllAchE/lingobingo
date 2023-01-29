@@ -1,8 +1,8 @@
 import React from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearSelections, setCard, setCategory } from '../store/cardSlice';
-import { createBingoCard } from '../scripts/createGrid';
+import { clearSelections, setCard, setCategory } from '../../store/cardSlice';
+import { createBingoCard } from '../../scripts/createGrid';
 
 export function CategorySelect() {
   const dis = useDispatch();
@@ -25,7 +25,6 @@ export function CategorySelect() {
           dis(setCategory(e.target.innerText));
           dis(
             setCard(
-              //@ts-ignore
               createBingoCard(
                 state.existingCategories[e.target.innerText],
                 state.dims

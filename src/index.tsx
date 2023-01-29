@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
-import App from './App';
+import App from './BingoApp';
 import reportWebVitals from './misc/reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/store';
@@ -13,27 +13,21 @@ const root = ReactDOM.createRoot(
 );
 
 const CoreApp = () => (
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 const EditSession = () => (
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 const RappingPairs = () => (
-  <React.StrictMode>
-    <Provider store={store}>
-      <RapApp />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <RapApp />
+  </Provider>
 );
 
 const RoutedApp = () => {

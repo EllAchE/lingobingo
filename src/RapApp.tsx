@@ -7,18 +7,19 @@ function RapApp() {
   const [rapping, setRapping] = useState<boolean>(false);
 
   return (
-    <Grid
-      container
-      sx={{ height: '100%' }}
-      direction="row"
-      spacing={1}
-      alignItems="center"
-      justifyContent={'center'}
-      justifyItems={'center'}
-    >
-      <MovingText/>
-      <RapMenu rapping={rapping} setRapping={setRapping} />
-    </Grid>
+    <>
+      <canvas className="-z-40 absolute top-0 left-0" id="cv"></canvas>
+      <Grid
+        container
+        sx={{ height: '100%' }}
+        direction="row"
+        alignItems="center"
+        justifyContent={'center'}
+      >
+        <MovingText />
+        <RapMenu rapping={rapping} setRapping={setRapping} />
+      </Grid>
+    </>
   );
 }
 

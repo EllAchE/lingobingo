@@ -8,7 +8,6 @@ export default function FireworksAndConfetti(props: any) {
     await loadFull(engine);
   };
 
-  //@ts-ignore
   return (
     <>
       <Particles
