@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { Button, Grid } from '@mui/material';
-import MovingText from './components/rapApp/RapText';
+import RapText from './components/rapApp/RapText';
 import RapMenu from './components/rapApp/RapMenu';
 import RapWaterMark from './components/bingo/RapWatermark';
 
 function RapApp() {
   let animationRef = useRef(null);
   const [a, setA] = useState(true);
+  const [pKey, setPKey] = useState(0);
 
   return (
     <>
@@ -37,7 +38,7 @@ function RapApp() {
             alignItems="center"
             justifyContent={'center'}
           >
-            <MovingText animationRef={animationRef} />
+            <RapText animationRef={animationRef} />
             <RapMenu animationRef={animationRef} />
           </Grid>
         </>

@@ -7,11 +7,13 @@ import { changeWords, setRapping } from '../../store/cardSlice';
 import TimerCircle from '../TimerCircle';
 import { BEAT_PATHS } from './constants';
 import BeatDropdown from './BeatDropdown';
+import { Button, Grid } from '@mui/material';
 
 export default function RapMenu({ animationRef }: { animationRef: any }) {
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
   const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
+  const [pKey, setPKey] = useState(0);
 
   function timeoutWordChange() {
     dis(changeWords(undefined));
@@ -93,7 +95,29 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
 
   return (
     <>
-      {state.rapping && <TimerCircle />}
+      {state.rapping && (
+        <Grid container direction="column" alignContent={'center'} spacing={1}>
+          <Grid>
+            <TimerCircle pKey={pKey} setPKey={setPKey} />
+            {/*Hacky spacing fix*/}
+            <br></br>
+          </Grid>
+          <Grid>
+            <Button
+              className="py-4"
+              variant="contained"
+              size="small"
+              onClick={() => {
+                clearInterval(intervalId);
+                setPKey(pKey + 1);
+                timeoutWordChange();
+              }}
+            >
+              Next Pair
+            </Button>
+          </Grid>
+        </Grid>
+      )}
       {!state.rapping && <BeatDropdown />}
       <audio
         id="myAudio"

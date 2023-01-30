@@ -4,7 +4,7 @@ import { Grid } from '@mui/material';
 import anime from 'animejs';
 import { useSelector } from 'react-redux';
 
-export default function MovingText({ animationRef }: { animationRef: any }) {
+export default function RapText({ animationRef }: { animationRef: any }) {
   const state = useSelector((state: any) => state.card);
 
   useEffect(() => {
