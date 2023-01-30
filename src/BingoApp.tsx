@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 import FireworksAndConfetti from './components/particles/FireworksAndConfetti';
 import { BingoCard } from './components/bingo/BingoCard';
 import RandomizeAndReset from './components/bingo/RandomizeAndReset';
-import WaterMark from './components/bingo/WaterMark';
+import BingoWaterMark from './components/bingo/BingoWaterMark';
 import { CreateYourOwnCard } from './components/bingo/CreateYourOwnCard';
 
-function App() {
+function BingoApp() {
   const state = useSelector((state: any) => state.card);
 
   // Create Success Snackbar
@@ -57,7 +57,7 @@ function App() {
       <Grid item xs={12}>
         {!state.showBingoEffects && !state.isEditing && <RandomizeAndReset />}
       </Grid>
-      <WaterMark />
+      <BingoWaterMark />
       <Box sx={{ height: '200px' }} />
       {state.showBingoEffects && <FireworksAndConfetti />}
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
@@ -73,4 +73,4 @@ function App() {
   );
 }
 
-export default App;
+export default BingoApp;

@@ -17,7 +17,14 @@ export default function BeatDropdown() {
         const source: any = document.getElementById('myAudio');
         source.src = newValue.path;
       }}
-      renderInput={(params) => <TextField {...params} label="Choose Beat" />}
+      renderInput={(params) => (
+        <TextField
+          sx={{ backgroundColor: 'white' }}
+          {...params}
+          variant="filled"
+          label="Choose Beat"
+        />
+      )}
     />
   );
 }

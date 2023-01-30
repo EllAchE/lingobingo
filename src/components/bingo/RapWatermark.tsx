@@ -2,9 +2,9 @@ import { Alert, Box, Button, Grid, IconButton, Snackbar } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import ShareIcon from '@mui/icons-material/Share';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { PRESET_CATEGORIES } from '../../constants';
 
 function rickRoll() {
   window.open('https://www.youtube.com/watch?v=a3Z7zEc7AXQ', '_blank');
@@ -25,7 +25,7 @@ function openGoogleForm() {
   );
 }
 
-export default function WaterMark() {
+export default function RapWaterMark() {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -47,26 +47,7 @@ export default function WaterMark() {
 
   function shareLink() {
     // let urlChunks = window.location.href.split('/');
-    let url = 'https://lingobingo.app';
-    if (state.category in PRESET_CATEGORIES) {
-      url += `/category/${state.category}`;
-    } else if (state.category) {
-      url += `/category/${state.category}/`;
-      let cells = state.existingCategories[state.category].squares;
-      if (state.editorFreeParking) {
-        cells = cells.filter((cell: string) => {
-          return cell != state.editorFreeParking[0];
-        });
-      }
-      for (let cell of cells) {
-        cell = cell.replaceAll(/\s/g, '%20');
-        url += cell + ';';
-      }
-      const fp = state.existingCategories[state.category].freeParking;
-      if (fp) {
-        url += fp.replaceAll(/\s/g, '%20') + ';' + '~FP~';
-      }
-    }
+    let url = 'https://lingobingo.app/rap';
     navigator.clipboard.writeText(url);
   }
 
@@ -75,38 +56,35 @@ export default function WaterMark() {
       sx={{
         bottom: 0,
         width: '100%',
-        position: 'fixed',
+        position: 'absolute',
       }}
     >
-      <Grid>
-        <IconButton onClick={openTwitter}>
-          <TwitterIcon sx={{ fontSize: 40 }} />
-        </IconButton>
-        <IconButton onClick={openGithub}>
-          <GitHubIcon sx={{ fontSize: 40 }} />
-        </IconButton>
-        <IconButton onClick={rickRoll}>
-          <InstagramIcon sx={{ fontSize: 40 }} />
-        </IconButton>
-        {!state.showBingoEffects && (
-          <Button
+      <Grid container direction="row" justifyContent={'space-evenly'}>
+        <Grid>
+          <IconButton onClick={openTwitter}>
+            <TwitterIcon sx={{ fontSize: 40 }} />
+          </IconButton>
+        </Grid>
+        <Grid>
+          <IconButton onClick={openGithub}>
+            <GitHubIcon sx={{ fontSize: 40 }} />
+          </IconButton>
+        </Grid>
+        <Grid>
+          <IconButton onClick={rickRoll}>
+            <InstagramIcon sx={{ fontSize: 40 }} />
+          </IconButton>
+        </Grid>
+        <Grid>
+          <IconButton
             onClick={() => {
               shareLink();
               handleClick();
             }}
           >
-            Share
-          </Button>
-        )}
-        {!state.showBingoEffects && (
-          <Button
-            onClick={() => {
-              openGoogleForm();
-            }}
-          >
-            Suggest
-          </Button>
-        )}
+            <ShareIcon sx={{ fontSize: 40 }} />
+          </IconButton>
+        </Grid>
       </Grid>
       <Snackbar open={open} autoHideDuration={2200} onClose={handleClose}>
         <Alert
@@ -114,7 +92,7 @@ export default function WaterMark() {
           severity="success"
           sx={{ width: '100%', right: 10 }}
         >
-          Copied URL to clipboard!
+          Copied site URL to clipboard!
         </Alert>
       </Snackbar>
       {/* <BingoCount /> */}

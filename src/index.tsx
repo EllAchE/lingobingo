@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
-import App from './BingoApp';
-import reportWebVitals from './misc/reportWebVitals';
+import BingoApp from './BingoApp';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -12,15 +11,9 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const CoreApp = () => (
+const BingoPage = () => (
   <Provider store={store}>
-    <App />
-  </Provider>
-);
-
-const EditSession = () => (
-  <Provider store={store}>
-    <App />
+    <BingoApp />
   </Provider>
 );
 
@@ -34,13 +27,14 @@ const RoutedApp = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<CoreApp />} />
-        <Route path="category/:category" element={<CoreApp />} />
+        <Route path="/" element={<BingoPage />} />
+        <Route path="/bingo" element={<BingoPage />} />
+        <Route path="category/:category" element={<BingoPage />} />
         <Route
           path="category/:customName/:customSquares"
-          element={<CoreApp />}
+          element={<BingoPage />}
         />
-        <Route path="create-your-own" element={<EditSession />} />
+        <Route path="create-your-own" element={<BingoPage />} />
         <Route path="rap" element={<RappingPairs />} />
       </Routes>
     </Router>

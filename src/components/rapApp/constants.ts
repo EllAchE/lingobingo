@@ -976,12 +976,12 @@ function getWordSetRanges(rs: any): any {
 export const WORD_SET_RANGES = getWordSetRanges(RHYME_SETS);
 
 export const BEAT_PATHS = [
-  { label: 'Beat 1', path: '/beats/beat1.mp3' },
-  { label: 'Beat 2', path: '/beats/beat2.mp3' },
-  { label: 'Beat 3', path: '/beats/beat3.mp3' },
-  { label: 'Beat 4', path: '/beats/beat4.mp3' },
-  { label: 'Beat 5', path: '/beats/beat5.mp3' },
-  { label: 'Beat 6', path: '/beats/beat6.mp3' },
+  { label: 'Wavy', path: '/beats/beat1.mp3' },
+  { label: 'Trumpets', path: '/beats/beat2.mp3' },
+  { label: 'BuzzDuzz', path: '/beats/beat3.mp3' },
+  { label: 'Trap Metronome', path: '/beats/beat4.mp3' },
+  { label: 'Oscillator', path: '/beats/beat5.mp3' },
+  { label: 'Driver', path: '/beats/beat6.mp3' },
 ];
 
 export const PRESETS = [

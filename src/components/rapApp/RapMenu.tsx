@@ -97,8 +97,8 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
       {!state.rapping && <BeatDropdown />}
       <audio
         id="myAudio"
-        className="w-80"
-        src={BEAT_PATHS[0].path}
+        className="w-80 pb-4"
+        src={''}
         controls
         autoPlay
         onPlay={() => {
