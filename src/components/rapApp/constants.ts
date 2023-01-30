@@ -546,7 +546,6 @@ export const RHYME_SETS: { [key: number]: string[] } = {
     'prewar',
     'deplore',
     'implore',
-    'inshore',
     'avatar',
     'galore',
     'footsore',
@@ -883,7 +882,6 @@ export const RHYME_SETS: { [key: number]: string[] } = {
     'shag',
     'swag',
     'fleabag',
-    'toerag',
     'dishrag',
     'washrag',
     'nosebag',
@@ -984,4 +982,9 @@ export const BEAT_PATHS = [
   { label: 'Beat 4', path: '/beats/beat4.mp3' },
   { label: 'Beat 5', path: '/beats/beat5.mp3' },
   { label: 'Beat 6', path: '/beats/beat6.mp3' },
+];
+
+export const PRESETS = [
+  ['Rick and Morty', 'Sippin Forty'],
+  ['Getting Sturdy', 'Not so purdy'],
 ];

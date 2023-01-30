@@ -4,7 +4,7 @@ import { FRAGMENT_SHADER, VERTEX_SHADER } from './shaders';
 import SceneInit from './SceneInit';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeWords, setRapping } from '../../store/cardSlice';
-import TimerCircle from '../ProgressBar';
+import TimerCircle from '../TimerCircle';
 import { BEAT_PATHS } from './constants';
 import BeatDropdown from './BeatDropdown';
 
@@ -110,7 +110,7 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
           clearInterval(intervalId);
         }}
       ></audio>
-      <BeatDropdown />
+      {!state.rapping && <BeatDropdown />}
       {state.rapping && <TimerCircle />}
     </>
   );

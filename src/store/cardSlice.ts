@@ -85,7 +85,6 @@ export const cardSlice = createSlice({
     },
     changeWords: (state, action) => {
       const m = selectRandomRhymeSet(WORD_SET_RANGES) - 1;
-      console.log(m);
       const [wordOne, wordTwo] = selectTwoRandom(RHYME_SETS[m]);
       state.wordOne = wordOne;
       state.wordTwo = wordTwo;
