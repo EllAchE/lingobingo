@@ -93,6 +93,8 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
 
   return (
     <>
+      {state.rapping && <TimerCircle />}
+      {!state.rapping && <BeatDropdown />}
       <audio
         id="myAudio"
         className="w-80"
@@ -110,8 +112,6 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
           clearInterval(intervalId);
         }}
       ></audio>
-      {!state.rapping && <BeatDropdown />}
-      {state.rapping && <TimerCircle />}
     </>
   );
 }
