@@ -1,17 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import { Divider, Grid } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Grid } from '@mui/material';
 
 import anime from 'animejs';
-import { selectRandomRhymeSet, selectTwoRandom } from '../../scripts/rapUtils';
-import { RHYME_SETS, WORD_SET_RANGES } from '../../rappingPairs';
 import { useSelector } from 'react-redux';
 
-export default function MovingText() {
-  let animationRef = useRef(null);
+export default function MovingText({ animationRef }: { animationRef: any }) {
   const state = useSelector((state: any) => state.card);
-
-  // const m = selectRandomRhymeSet(WORD_SET_RANGES);
-  // const [wordOne, wordTwo] = selectTwoRandom(RHYME_SETS[m]);
 
   useEffect(() => {
     animationRef.current = anime.timeline({ loop: true, autoplay: false });
@@ -22,7 +16,7 @@ export default function MovingText() {
       scale: 1.4,
       duration: 200,
       easing: 'easeInExpo',
-      delay: 1000,
+      delay: 800,
     });
     animationRef.current.add({
       targets: '.movingwords',
@@ -46,21 +40,8 @@ export default function MovingText() {
         sx={{ margin: 'auto' }}
         className="text-6xl movingwords"
       >
-        <div
-          onClick={() => {
-            animationRef.current.play();
-          }}
-          className="movingwords"
-        >
-          {state.wordOne}
-        </div>
+        <div className="movingwords">{state.wordOne}</div>
       </Grid>
-      <Divider
-        sx={{ width: '100%', height: '4px', backgroundColor: 'black' }}
-        component="div"
-        role="presentation"
-      />
-
       <Grid
         item
         xs={12}

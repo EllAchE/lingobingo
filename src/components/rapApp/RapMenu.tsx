@@ -1,37 +1,27 @@
-import { Button, Grid } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { BEAT_PATHS } from '../../constants';
-import BeatButton from './BeatButton';
 import * as THREE from 'three';
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './shaders';
 import SceneInit from './SceneInit';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeWords } from '../../store/cardSlice';
+import { changeWords, setRapping } from '../../store/cardSlice';
+import TimerCircle from '../ProgressBar';
+import { BEAT_PATHS } from './constants';
+import BeatDropdown from './BeatDropdown';
 
-export default function RapMenu({
-  rapping,
-  setRapping,
-}: {
-  rapping: boolean;
-  setRapping: any;
-}) {
-  const [beatIndex, setBeatIndex] = useState(0);
+export default function RapMenu({ animationRef }: { animationRef: any }) {
   const dis = useDispatch();
   const state = useSelector((state: any) => state.card);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
 
-  // function timeoutWordChange() {
-  //   if (rapping) {
-  //     setTimeout(() => {
-  //       dis(changeWords(undefined));
-  //       timeoutWordChange();
-  //     }, 8000);
-  //   }
-  // }
-
-  // function beginNewRap() {
-  //   setRapping(true);
-  //   timeoutWordChange();
-  // }
+  function timeoutWordChange() {
+    dis(changeWords(undefined));
+    const id = setInterval(() => {
+      if (state.rapping) {
+        dis(changeWords(undefined));
+      }
+    }, 6000);
+    setIntervalId(id);
+  }
 
   const setupAudioContext = () => {
     const audioContext = new window.AudioContext();
@@ -72,9 +62,9 @@ export default function RapMenu({
 
     const planeMesh = new THREE.Mesh(planeGeometry, planeCustomMaterial);
     planeMesh.rotation.x = -Math.PI / 2 + Math.PI / 4;
-    planeMesh.scale.x = 2;
-    planeMesh.scale.y = 2;
-    planeMesh.scale.z = 2;
+    planeMesh.scale.x = 1.7;
+    planeMesh.scale.y = 1.7;
+    planeMesh.scale.z = 1.7;
     planeMesh.position.y = 8;
 
     let test = new SceneInit('cv');
@@ -98,43 +88,30 @@ export default function RapMenu({
       // note: call render function on every animation frame
       requestAnimationFrame(render);
     };
-    console.log('rend');
     render(0);
   }, []);
-
-  function chooseBeat(index: number) {
-    index = index % BEAT_PATHS.length;
-    const source: any = document.getElementById('myAudio');
-    source.src = BEAT_PATHS[index];
-    setBeatIndex(index);
-  }
 
   return (
     <>
       <audio
         id="myAudio"
         className="w-80"
+        src={BEAT_PATHS[0].path}
         controls
         autoPlay
-        onPlay={() => setRapping(true)}
+        onPlay={() => {
+          dis(setRapping(true));
+          animationRef.current.play();
+          timeoutWordChange();
+        }}
         onPause={() => {
-          setRapping(false);
+          dis(setRapping(false));
+          animationRef.current.pause();
+          clearInterval(intervalId);
         }}
       ></audio>
-      {!rapping && (
-        <Grid container alignItems={'spaceAround'}>
-          {BEAT_PATHS.map((val, index) => {
-            return (
-              <BeatButton
-                rapping={rapping}
-                key={index}
-                index={index}
-                chooseBeat={chooseBeat}
-              />
-            );
-          })}
-        </Grid>
-      )}
+      <BeatDropdown />
+      {state.rapping && <TimerCircle />}
     </>
   );
 }
