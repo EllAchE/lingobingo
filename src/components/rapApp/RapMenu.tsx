@@ -3,25 +3,31 @@ import * as THREE from 'three';
 import { FRAGMENT_SHADER, VERTEX_SHADER } from './shaders';
 import SceneInit from './SceneInit';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeWords, setRapping } from '../../store/cardSlice';
 import TimerCircle from '../TimerCircle';
-import { BEAT_PATHS } from './constants';
 import BeatDropdown from './BeatDropdown';
 import { Button, Grid } from '@mui/material';
+import { popPushRandomWord, setRapping } from '../../store/rapSlice';
+import PresetsDropdown from './PresetsDropdown';
 
 export default function RapMenu({ animationRef }: { animationRef: any }) {
   const dis = useDispatch();
-  const state = useSelector((state: any) => state.card);
+  const rapState = useSelector((state: any) => state.rap);
   const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
   const [pKey, setPKey] = useState(0);
+  const duration = 6;
 
   function timeoutWordChange() {
-    dis(changeWords(undefined));
+    setPKey((pKey + 1) % 30);
+    dis(popPushRandomWord(undefined));
     const id = setInterval(() => {
-      if (state.rapping) {
-        dis(changeWords(undefined));
+      if (rapState.rapping) {
+        console.log(pKey);
+        setPKey((pKey + 1) % 30);
+        dis(popPushRandomWord(undefined));
       }
-    }, 6000);
+      console.log('not rap');
+      console.log(pKey);
+    }, duration * 1000);
     setIntervalId(id);
   }
 
@@ -54,7 +60,7 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
     };
 
     // note: set up plane mesh and add it to the scene
-    const planeGeometry = new THREE.PlaneGeometry(64, 64, 64, 64);
+    const planeGeometry = new THREE.PlaneGeometry(64, 64, 64, 128);
     const planeCustomMaterial = new THREE.ShaderMaterial({
       uniforms: uniforms,
       vertexShader: VERTEX_SHADER,
@@ -68,10 +74,21 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
     planeMesh.scale.y = 1.7;
     planeMesh.scale.z = 1.7;
     planeMesh.position.y = 8;
+    planeMesh.position.z = -16;
+
+    // const torusGeometry = new THREE.SphereGeometry(10, 20, 20);
+    // const torusCustomMaterial = new THREE.MeshBasicMaterial({
+    //   color: 0xff0000,
+    //   wireframe: true,
+    // });
+
+    // const torusMesh = new THREE.Mesh(torusGeometry, torusCustomMaterial);
+    // torusMesh.position.z = 16;
 
     let test = new SceneInit('cv');
     test.initScene();
     test.scene.add(planeMesh);
+    // test.scene.add(torusMesh);
     test.animate();
 
     const render = (time) => {
@@ -83,9 +100,9 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
       uniforms.u_data_arr.value = dataArray;
 
       //   If refresh should rotate the plane
-      //   planeMesh.rotation.x += 0.01;
-      //   planeMesh.rotation.y += 0.01;
-      //   planeMesh.rotation.z += 0.01;
+      // torusMesh.rotation.x += 0.01;
+      // torusMesh.rotation.y += 0.01;
+      // torusMesh.rotation.z += 0.01;
 
       // note: call render function on every animation frame
       requestAnimationFrame(render);
@@ -95,10 +112,10 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
 
   return (
     <>
-      {state.rapping && (
+      {rapState.rapping && (
         <Grid container direction="column" alignContent={'center'} spacing={1}>
           <Grid>
-            <TimerCircle pKey={pKey} setPKey={setPKey} />
+            <TimerCircle pKey={pKey} setPKey={setPKey} duration={duration} />
             {/*Hacky spacing fix*/}
             <br></br>
           </Grid>
@@ -109,7 +126,6 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
               size="small"
               onClick={() => {
                 clearInterval(intervalId);
-                setPKey(pKey + 1);
                 timeoutWordChange();
               }}
             >
@@ -118,7 +134,8 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
           </Grid>
         </Grid>
       )}
-      {!state.rapping && <BeatDropdown />}
+      {!rapState.rapping && <BeatDropdown />}
+      {!rapState.rapping && <PresetsDropdown />}
       <audio
         id="myAudio"
         className="w-80 pb-4"

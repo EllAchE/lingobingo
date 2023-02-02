@@ -214,7 +214,6 @@ export const RHYME_SETS: { [key: number]: string[] } = {
     'leek',
     'reek',
     'geek',
-    'peke',
     'speak',
     'antique',
     'bleak',
@@ -833,7 +832,6 @@ export const RHYME_SETS: { [key: number]: string[] } = {
     'anklebone',
     'microloan',
     'testosterone',
-    'radiotelephone',
     'phone',
   ],
   37: [
@@ -974,15 +972,11 @@ function getWordSetRanges(rs: any): any {
 export const WORD_SET_RANGES = getWordSetRanges(RHYME_SETS);
 
 export const BEAT_PATHS = [
+  { label: 'Lose Yourself', path: '/beats/Lose Yourself.m4a' },
   { label: 'Wavy', path: '/beats/beat1.mp3' },
   { label: 'Trumpets', path: '/beats/beat2.mp3' },
   { label: 'BuzzDuzz', path: '/beats/beat3.mp3' },
   { label: 'Trap Metronome', path: '/beats/beat4.mp3' },
   { label: 'Oscillator', path: '/beats/beat5.mp3' },
   { label: 'Driver', path: '/beats/beat6.mp3' },
-];
-
-export const PRESETS = [
-  ['Rick and Morty', 'Sippin Forty'],
-  ['Getting Sturdy', 'Not so purdy'],
 ];

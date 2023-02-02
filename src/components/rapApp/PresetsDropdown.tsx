@@ -1,20 +1,23 @@
 import { Autocomplete, TextField } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { overwriteWordQueue, setRapping } from '../../store/rapSlice';
-import { BEAT_PATHS } from './constants';
+import { PRESETS } from './presets';
 
-export default function BeatDropdown() {
+export default function PresetsDropdown() {
   const dis = useDispatch();
 
   return (
     <Autocomplete
       disablePortal
       id="combo-box-demo"
-      options={BEAT_PATHS}
+      options={PRESETS}
       sx={{ width: 300 }}
-      onChange={(event: any, newValue: { label: string; path: string }) => {
+      onChange={(
+        event: any,
+        newValue: { label: string; pairs: string; path: string }
+      ) => {
         dis(setRapping(true));
-        dis(overwriteWordQueue([[]]));
+        dis(overwriteWordQueue(newValue.pairs));
         const source: any = document.getElementById('myAudio');
         source.src = newValue.path;
       }}
@@ -23,7 +26,7 @@ export default function BeatDropdown() {
           sx={{ backgroundColor: 'white' }}
           {...params}
           variant="filled"
-          label="Choose Beat"
+          label="Choose Preset"
         />
       )}
     />

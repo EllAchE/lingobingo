@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export function selectTwoRandom(wordSet: string[]): string[] {
   let randomIndices = new Set();
   while (randomIndices.size < 2) {
@@ -34,4 +36,19 @@ export function selectRandomRhymeSet(wordSetRanges: number[]): number {
 
 function uppercaseFirst(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export async function getRhymes(word: string) {
+  const url = `https://rhymebrain.com/talk?function=getRhymes&word=${word}&lang=en&includePron=1`;
+  const res = await axios(url);
+  const fullRhymes = res.data
+    .filter((wordData) => {
+      return wordData.score === 300;
+    })
+    .map((wordData) => {
+      return wordData.word;
+    });
+
+  fullRhymes.push(word);
+  return fullRhymes;
 }

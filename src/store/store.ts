@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import cardReducer from './cardSlice';
+import rapReducer from './rapSlice';
 
 export default configureStore({
   reducer: {
     card: cardReducer,
+    rap: rapReducer,
   },
 });
 

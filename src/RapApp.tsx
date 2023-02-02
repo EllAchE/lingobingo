@@ -7,7 +7,6 @@ import RapWaterMark from './components/bingo/RapWatermark';
 function RapApp() {
   let animationRef = useRef(null);
   const [a, setA] = useState(true);
-  const [pKey, setPKey] = useState(0);
 
   return (
     <>

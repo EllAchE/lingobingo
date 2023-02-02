@@ -1,0 +1,26 @@
+export const PRESETS: any[] = [
+  {
+    label: 'Lose Yourself',
+    pairs: [
+      ['Lose', 'Yourself'],
+      ['Heavy', 'Spaghetti'],
+      ['Calm', 'Bombs'],
+      ['Down', 'Loud'],
+      ['Mouth', 'Out'],
+      ['How', 'Now'],
+      ['Reality', 'Gravity'],
+      ['But he', 'Easy'],
+      ['Ropes', 'Dope'],
+      ['Go', 'Blow'],
+      ['Gaping', 'Taking'],
+      ['Order', 'Post mortem'],
+      ['Hotter', 'Globetrotter'],
+      ['Daughter', 'Water'],
+      ['Nada', 'Da dum da da'],
+      ['Rage', 'Caged'],
+      ['Changed', 'Stage'],
+      ['Cypher', 'Piper'],
+    ],
+    path: '/beats/trim.m4a',
+  },
+];

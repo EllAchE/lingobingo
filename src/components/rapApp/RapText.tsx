@@ -5,7 +5,7 @@ import anime from 'animejs';
 import { useSelector } from 'react-redux';
 
 export default function RapText({ animationRef }: { animationRef: any }) {
-  const state = useSelector((state: any) => state.card);
+  const state = useSelector((state: any) => state.rap);
 
   useEffect(() => {
     animationRef.current = anime.timeline({ loop: true, autoplay: false });
@@ -40,7 +40,7 @@ export default function RapText({ animationRef }: { animationRef: any }) {
         sx={{ margin: 'auto' }}
         className="text-6xl movingwords"
       >
-        <div className="movingwords">{state.wordOne}</div>
+        <div className="movingwords">{state.wordQueue[0][0] ?? 'Lingo'}</div>
       </Grid>
       <Grid
         item
@@ -49,7 +49,7 @@ export default function RapText({ animationRef }: { animationRef: any }) {
         sx={{ margin: 'auto' }}
         className="text-6xl movingwords"
       >
-        {state.wordTwo}
+        {state.wordQueue[0][1] ?? 'Bingo'}
       </Grid>
     </>
   );

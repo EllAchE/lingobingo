@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { EMPTY_CELL_STATES, PRESET_CATEGORIES } from '../constants';
-import { RHYME_SETS, WORD_SET_RANGES } from '../components/rapApp/constants';
 import { createBingoCard } from '../scripts/createGrid';
-import { selectRandomRhymeSet, selectTwoRandom } from '../scripts/rapUtils';
 
 export const cardSlice = createSlice({
   name: 'card',
@@ -18,9 +16,6 @@ export const cardSlice = createSlice({
     existingCategories: PRESET_CATEGORIES, // For future support of persistence of cats locally
     dims: 4,
     editorFreeParking: [undefined, undefined],
-    wordOne: 'Lingo',
-    wordTwo: 'Bingo',
-    rapping: false,
   },
   reducers: {
     setState: (state, action) => {
@@ -83,15 +78,6 @@ export const cardSlice = createSlice({
     setEditorFreeParking: (state, action) => {
       state.editorFreeParking = action.payload;
     },
-    changeWords: (state, action) => {
-      const m = selectRandomRhymeSet(WORD_SET_RANGES) - 1;
-      const [wordOne, wordTwo] = selectTwoRandom(RHYME_SETS[m]);
-      state.wordOne = wordOne;
-      state.wordTwo = wordTwo;
-    },
-    setRapping: (state, action) => {
-      state.rapping = action.payload;
-    },
   },
 });
 
@@ -110,8 +96,6 @@ export const {
   clearSelections,
   addCategory,
   setEditorFreeParking,
-  setRapping,
-  changeWords,
 } = cardSlice.actions;
 
 export default cardSlice.reducer;
