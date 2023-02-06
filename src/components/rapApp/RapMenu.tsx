@@ -135,7 +135,7 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
         </Grid>
       )}
       {!rapState.rapping && <BeatDropdown />}
-      {!rapState.rapping && <PresetsDropdown />}
+      {/* {!rapState.rapping && <PresetsDropdown />} */}
       <audio
         id="myAudio"
         className="w-80 pb-4"
