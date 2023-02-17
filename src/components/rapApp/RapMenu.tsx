@@ -114,11 +114,11 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
     <>
       {rapState.rapping && (
         <Grid container direction="column" alignContent={'center'} spacing={1}>
-          <Grid>
+          {/* <Grid>
             <TimerCircle pKey={pKey} setPKey={setPKey} duration={duration} />
-            {/*Hacky spacing fix*/}
+            // {Hacky spacing fix}
             <br></br>
-          </Grid>
+          </Grid> */}
           <Grid>
             <Button
               className="py-4"
@@ -126,7 +126,7 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
               size="small"
               onClick={() => {
                 clearInterval(intervalId);
-                timeoutWordChange();
+                // timeoutWordChange();
               }}
             >
               Next Pair
@@ -145,7 +145,7 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
         onPlay={() => {
           dis(setRapping(true));
           animationRef.current.play();
-          timeoutWordChange();
+          // timeoutWordChange();
         }}
         onPause={() => {
           dis(setRapping(false));
