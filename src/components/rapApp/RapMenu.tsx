@@ -19,16 +19,16 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
   function timeoutWordChange() {
     setPKey((pKey + 1) % 30);
     dis(popPushRandomWord(undefined));
-    const id = setInterval(() => {
-      if (rapState.rapping) {
-        console.log(pKey);
-        setPKey((pKey + 1) % 30);
-        dis(popPushRandomWord(undefined));
-      }
-      console.log('not rap');
-      console.log(pKey);
-    }, duration * 1000);
-    setIntervalId(id);
+    // const id = setInterval(() => {
+    //   if (rapState.rapping) {
+    //     console.log(pKey);
+    //     setPKey((pKey + 1) % 30);
+    //     dis(popPushRandomWord(undefined));
+    //   }
+    //   console.log('not rap');
+    //   console.log(pKey);
+    // }, duration * 1000);
+    // setIntervalId(id);
   }
 
   const setupAudioContext = () => {
@@ -126,7 +126,7 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
               size="small"
               onClick={() => {
                 clearInterval(intervalId);
-                // timeoutWordChange();
+                timeoutWordChange();
               }}
             >
               Next Pair
@@ -145,7 +145,7 @@ export default function RapMenu({ animationRef }: { animationRef: any }) {
         onPlay={() => {
           dis(setRapping(true));
           animationRef.current.play();
-          // timeoutWordChange();
+          timeoutWordChange();
         }}
         onPause={() => {
           dis(setRapping(false));
